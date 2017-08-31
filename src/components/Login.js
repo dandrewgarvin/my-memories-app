@@ -9,12 +9,12 @@ import logo from '../styles/assets/myMemoriesLogo.png'
 import axios from 'axios'
 
 class Login extends Component {
-
-	componentDidMount(){
-		axios.get('https://pokeapi.co/api/v2/pokemon/1').then((response) => {
-			console.log(response.data)
-		})
-	}
+    
+    loginButtonClicked() {
+        axios.get('http://localhost:3001/api/home').then((response) => {
+            console.log(response.data)
+        })
+    }
 
 	render(){
 		return (
@@ -26,7 +26,7 @@ class Login extends Component {
                     <p>Oops! It looks like you're not logged in.</p>
                     <p>To continue using MyMemories, please log in now!</p>
                     <section className="buttons">
-                        <button>Login</button>
+                        <button onClick={this.loginButtonClicked}>Login</button>
                         <button>Sign Up</button>
                     </section>
                 </main>

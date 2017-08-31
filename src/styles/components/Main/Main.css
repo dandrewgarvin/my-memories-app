@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,700|Varela+Round");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,700|Varela+Round");
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+*:focus {
+  outline: none; }
+
+button {
+  outline: none; }
+
+/*
+ * This file is for all the default styles that are
+ * not component-specific. These will be registered
+ * first, then the component style files will be
+ * loaded, over-writing these defaults.
+ */
+/*
+ * Example Function:
+ * function calc-height($height, $number) {
+ *      @return $height - $number
+ * }
+ */
+.Login {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px; }
+  .Login header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px; }
+    .Login header .main_logo {
+      height: 60px;
+      width: auto; }
+  .Login main {
+    width: 100%;
+    height: calc(100vh - 120px);
+    padding-top: 20px; }
+    .Login main p {
+      color: #777;
+      text-align: center;
+      margin: 35px;
+      font-weight: 500; }
+    .Login main .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; }
+      .Login main .buttons button {
+        height: 70px;
+        width: 80%;
+        border: 1px solid #fa7c92;
+        border-radius: 10px;
+        background: white;
+        color: #fa7c92;
+        margin: 10px;
+        font-size: 16px; }
+      .Login main .buttons :nth-child(2) {
+        background: #fa7c92;
+        color: white; }
+
+.Landing p {
+  color: blue; }

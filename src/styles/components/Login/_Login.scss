@@ -1,0 +1,46 @@
+.Login {
+    font: {
+        family: "Raleway", sans-serif;
+        size: 24px;
+    }
+    header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 60px;
+        .main_logo {
+            height: 60px;
+            width: auto;
+        }
+    }
+    main {
+        width: 100%;
+        height: calc(100vh - 120px);
+        padding-top: 20px;
+        p {
+            color: $gray;
+            text-align: center;
+            margin: 35px;
+            font-weight: 500;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            button {
+                height: 70px;
+                width: 80%;
+                border: 1px solid $primary;
+                border-radius: 10px;
+                background: white;
+                color: $primary;
+                margin: 10px;
+                font-size: 16px;
+            }
+            :nth-child(2){
+                background: $primary;
+                color: white;
+            }
+        }
+    }
+}

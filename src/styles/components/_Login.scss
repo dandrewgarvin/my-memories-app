@@ -27,19 +27,25 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            a {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+            }
             button {
                 height: 70px;
                 width: 80%;
                 border: 1px solid $primary;
                 border-radius: 10px;
-                background: white;
+                background: $white;
                 color: $primary;
                 margin: 10px;
                 font-size: 16px;
             }
-            :nth-child(2){
+            #sign_up_button{
                 background: $primary;
-                color: white;
+                color: $white;
             }
         }
     }

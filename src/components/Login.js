@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 import store from '../ducks/store'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-import '../styles/components/Main/Main.css'
+import '../styles/components/Main.css'
 import logo from '../styles/assets/myMemoriesLogo.png'
 
 import axios from 'axios'
@@ -11,7 +12,7 @@ import axios from 'axios'
 class Login extends Component {
     
     loginButtonClicked() {
-        axios.get('http://localhost:3001/api/home').then((response) => {
+        axios.get('http://localhost:3001/auth').then((response) => {
             console.log(response.data)
         })
     }
@@ -26,8 +27,8 @@ class Login extends Component {
                     <p>Oops! It looks like you're not logged in.</p>
                     <p>To continue using MyMemories, please log in now!</p>
                     <section className="buttons">
-                        <button onClick={this.loginButtonClicked}>Login</button>
-                        <button>Sign Up</button>
+                        <a href="http://localhost:3001/auth"><button>Login</button></a>
+                        <a href="http://localhost:3001/auth"><button id="sign_up_button">Sign Up</button></a>
                     </section>
                 </main>
 			</div>

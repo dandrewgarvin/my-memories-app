@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import store from '../ducks/store'
 import {connect} from 'react-redux'
 
-import '../styles/components/Main/Main.css'
+import '../styles/components/Main.css'
 
 import router from '../router'
 

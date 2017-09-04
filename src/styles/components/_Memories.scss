@@ -1,3 +1,51 @@
 .Memories {
-    
+    .unread_memory_envelop {
+        border: 1px solid $primary;
+        width: 80%;
+        margin: 30px auto;
+        position: relative;
+        height: 150px;
+        border-radius: 5px;
+        .new_memory_icon {
+            z-index: 9;
+            position: absolute;
+            right: -25px;
+            top: -15px;
+            background: $secondary;
+            border-radius: 50%;
+            color: white;
+            height: 30px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Raleway', sans-serif;
+            font-size: 16px;
+        }
+        .new_memory_triangle {
+            z-index: -1;
+            height: 0;
+            width: 0;
+            border-left: 127px solid transparent;
+            border-top: 75px solid $primary;
+            border-right: 127px solid transparent;
+            position: relative;
+        }
+    }
+   .memory_title {
+       text-align: center;
+       margin-top: -60px;
+       color: white;
+   }
+    .memory_sender_from {
+        text-align: center;
+        margin-top: 45px;
+        color: $gray;
+    }
+    .memory_sender {
+        text-align: center;
+        font-size: 22px;
+        color: $secondary;
+        margin-top: 5px;
+    }
 }

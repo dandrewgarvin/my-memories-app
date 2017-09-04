@@ -184,13 +184,12 @@ button {
     font-size: 22px;
     font-family: 'Raleway', sans-serif; }
 
-.Landing a {
+.Landing .link {
   width: 100%;
   display: flex;
   justify-content: center;
-  text-decoration: none; }
-
-.Landing button {
+  align-items: center;
+  text-decoration: none;
   height: 70px;
   width: 80%;
   border-radius: 7px;
@@ -218,10 +217,10 @@ button {
     width: auto;
     height: 45px; }
   .Header .menu_open {
+    z-index: 11;
     height: 7px;
     width: 35px;
-    border: 1px solid #6abbce;
-    z-index: 10; }
+    border: 1px solid #6abbce; }
     .Header .menu_open:before {
       position: absolute;
       height: 7px;
@@ -260,6 +259,7 @@ button {
   100% {
     right: 0px; } }
   .Header .menu_div {
+    z-index: 10;
     height: 100vh;
     width: 70%;
     position: absolute;
@@ -276,6 +276,7 @@ button {
     left: 0px;
     opacity: .6; } }
   .Header .menu_div_shadow {
+    z-index: 10;
     height: 100vh;
     width: 30%;
     background: #777;
@@ -284,15 +285,61 @@ button {
     position: absolute;
     opacity: .6;
     animation: .5s ease-in-out showShadow; }
-  .Header ul {
+  .Header .menu_link_item {
+    display: block;
     text-decoration: none;
-    list-style: none; }
-    .Header ul li {
-      font-family: "Raleway", sans-serif;
-      font-size: 20px;
-      color: #6abbce;
-      text-align: center;
-      margin: 75px 20px; }
-    .Header ul :nth-last-child(1) {
-      color: #fa7c92;
-      font-weight: bold; }
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color: #6abbce;
+    text-align: center;
+    margin: 75px 20px; }
+  .Header :nth-last-child(1) {
+    color: #fa7c92;
+    font-weight: bold; }
+
+.Memories .unread_memory_envelop {
+  border: 1px solid #fa7c92;
+  width: 80%;
+  margin: 30px auto;
+  position: relative;
+  height: 150px;
+  border-radius: 5px; }
+  .Memories .unread_memory_envelop .new_memory_icon {
+    z-index: 9;
+    position: absolute;
+    right: -25px;
+    top: -15px;
+    background: #6abbce;
+    border-radius: 50%;
+    color: white;
+    height: 30px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px; }
+  .Memories .unread_memory_envelop .new_memory_triangle {
+    z-index: -1;
+    height: 0;
+    width: 0;
+    border-left: 127px solid transparent;
+    border-top: 75px solid #fa7c92;
+    border-right: 127px solid transparent;
+    position: relative; }
+
+.Memories .memory_title {
+  text-align: center;
+  margin-top: -60px;
+  color: white; }
+
+.Memories .memory_sender_from {
+  text-align: center;
+  margin-top: 45px;
+  color: #777; }
+
+.Memories .memory_sender {
+  text-align: center;
+  font-size: 22px;
+  color: #6abbce;
+  margin-top: 5px; }

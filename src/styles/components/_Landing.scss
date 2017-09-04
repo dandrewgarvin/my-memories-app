@@ -41,13 +41,12 @@
             font-family: 'Raleway', sans-serif;
         }
     }
-    a {
+    .link {
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
         text-decoration: none;
-    }
-    button {
         height: 70px;
         width: 80%;
         border-radius: 7px;

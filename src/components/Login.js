@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import store from '../ducks/store'
+// import store from '../ducks/store'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 import '../styles/components/Main.css'
 import logo from '../styles/assets/myMemoriesLogo.png'

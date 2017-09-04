@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import store from '../ducks/store'
+// import store from '../ducks/store'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 import '../styles/components/Main.css'
 
@@ -26,4 +27,4 @@ let updateActions = {
 	
 }
 
-export default connect(mapStateToProps, updateActions)(App);
+export default withRouter(connect(mapStateToProps, updateActions)(App));

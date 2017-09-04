@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import '../styles/components/Main.css'
 import logo from '../styles/assets/myMemoriesLogo.png'
+import {Link} from 'react-router-dom'
 
 
 export default class Header extends Component {
@@ -31,13 +32,11 @@ export default class Header extends Component {
         
         let menuDivShadow = <div className="menu_div_shadow hidden_shadow"></div>;
         let menuDiv = <div className="menu_div">
-            <ul>
-                <li>Go Home</li>
-                <li>View My Memories</li>
-                <li>Submit a Memory</li>
-                <li>Connect with a Loved One</li>
-                <li>Logout</li>
-            </ul>
+                <Link className="menu_link_item" to="/home" >Go Home</Link >
+                <Link className="menu_link_item" to="/memories" >View My Memories</Link >
+                <Link className="menu_link_item" to="/">Submit a Memory</Link >
+                <Link className="menu_link_item" to="/">Connect with a Loved One</Link >
+                <Link className="menu_link_item" to="/">Logout</Link >
         </div>;
         let hamburgerOpen = <span onClick={this.buttonClicked} className="menu_open"></span>;
         let hamburgerClose = <span onClick={this.buttonClicked} className="menu_open active"></span>;

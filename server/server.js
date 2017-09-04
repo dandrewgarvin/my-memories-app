@@ -118,6 +118,12 @@ app.get('/auth/me', (req, res, next) => {
 
 // === GET REQUESTS === //
 
+app.get('/api/getMemoriesByUser/:id', (req, res) => {
+    console.log('received request for user ' + req.params.id)
+    app.get('db').getMemoriesByUserId([req.params.id]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
 
 // === PUT REQUESTS === //
 

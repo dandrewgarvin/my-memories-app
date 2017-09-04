@@ -6,7 +6,7 @@ const initialState = {
 
 // ===== VARIABLES ===== //
 
-const VARIABLE_NAME = VARIABLE_NAME;
+const VARIABLE_NAME = "VARIABLE_NAME";
 
 // ===== REDUCER ===== //
 

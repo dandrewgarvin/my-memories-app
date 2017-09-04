@@ -44,7 +44,7 @@ export default class Header extends Component {
         
 		return (
 			<div className='Header'>
-                <img src={logo} />
+                <img src={logo} alt="MyMemories Logo" />
                 {this.state.menuOpen ? hamburgerClose : hamburgerOpen}
                 {this.state.menuOpen ? menuDivShadow : null}
                 {this.state.menuOpen ? menuDiv : null}

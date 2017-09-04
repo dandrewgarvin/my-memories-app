@@ -34,16 +34,16 @@
             content: "";
         }
         &.active {
-            transition: .3s;
+            transition: .4s;
             transform: translateY(0px / 2 * 1) translateX(0) rotate(-45deg);
             border: 1px solid $primary;
             background: $primary;
             &:before {
-                transition: .3s;
+                transition: .4s;
                 opacity: 0;
             }
             &:after {
-                transition: .3s;
+                transition: .4s;
                 transform: translateY(10px * -1) translateX(10px) rotate(-90deg);
                 border: 1px solid $primary;
                 background: $primary;

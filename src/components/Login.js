@@ -13,7 +13,6 @@ class Login extends Component {
     
     loginButtonClicked() {
         axios.get('http://localhost:3001/auth').then((response) => {
-            console.log(response.data)
         })
     }
 

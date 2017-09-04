@@ -148,8 +148,63 @@ button {
         background: #fa7c92;
         color: #fff; }
 
+.Landing h1 {
+  color: #6abbce;
+  text-align: center;
+  margin: 25px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: 500; }
+
 .Landing p {
-  color: blue; }
+  margin: 40px;
+  color: #777;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px; }
+  .Landing p .unread_messages {
+    color: #fa7c92; }
+
+.Landing .button_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative; }
+  .Landing .button_container .unseen_memories {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 2px;
+    background: #6abbce;
+    position: absolute;
+    right: 6%;
+    color: white;
+    border: 1px solid #fa7c92;
+    font-size: 22px;
+    font-family: 'Raleway', sans-serif; }
+
+.Landing a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none; }
+
+.Landing button {
+  height: 70px;
+  width: 80%;
+  border-radius: 7px;
+  border: 1px solid #fa7c92;
+  background: white;
+  color: #fa7c92;
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+  margin: 15px;
+  font-weight: 500; }
+
+.Landing .button_send {
+  background: #fa7c92;
+  color: white; }
 
 .Header {
   box-shadow: 10px 1px 20px -10px #fa7c92;
@@ -184,15 +239,15 @@ button {
       right: 10px;
       content: ""; }
     .Header .menu_open.active {
-      transition: .3s;
+      transition: .4s;
       transform: translateY(0px) translateX(0) rotate(-45deg);
       border: 1px solid #fa7c92;
       background: #fa7c92; }
       .Header .menu_open.active:before {
-        transition: .3s;
+        transition: .4s;
         opacity: 0; }
       .Header .menu_open.active:after {
-        transition: .3s;
+        transition: .4s;
         transform: translateY(-10px) translateX(10px) rotate(-90deg);
         border: 1px solid #fa7c92;
         background: #fa7c92; }

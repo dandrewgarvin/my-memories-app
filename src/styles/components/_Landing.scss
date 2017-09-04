@@ -1,5 +1,66 @@
 .Landing {
+    h1 {
+        color: $secondary;
+        text-align: center;
+        margin: 25px;
+        font: {
+            family: 'Raleway', sans-serif;
+            size: 24px;
+            weight: 500;
+        }
+    }
     p {
-        color: blue;
+        margin: 40px;
+        color: $gray;
+        text-align: center;
+        font: {
+            family: 'Raleway', sans-serif;
+            size: 20px;
+        }
+        .unread_messages {
+            color: $primary;
+        }
+    }
+    .button_container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        .unseen_memories {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 2px;
+            background: $secondary;
+            position: absolute;
+            right: 6%;
+            color: white;
+            border: 1px solid $primary;
+            font-size: 22px;
+            font-family: 'Raleway', sans-serif;
+        }
+    }
+    a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+    }
+    button {
+        height: 70px;
+        width: 80%;
+        border-radius: 7px;
+        border: 1px solid $primary;
+        background: white;
+        color: $primary;
+        font-size: 16px;
+        font-family: 'Raleway', sans-serif;
+        margin: 15px;
+        font-weight: 500;
+    }
+    .button_send {
+        background: $primary;
+        color: white;
     }
 }

@@ -16,7 +16,7 @@ class Memories extends Component {
 
         this.state = {
             userId: 1,
-            memories: {}
+            memories: null
         }
     }
 
@@ -24,7 +24,7 @@ class Memories extends Component {
         console.log('working')
     }
 
-    componentDidMount(){
+    componentWillMount(){
         axios.get(`http://localhost:3001/api/getMemoriesByUser/${this.state.userId}`).then((response) => {
             console.log(response.data)
             this.setState({
@@ -35,26 +35,27 @@ class Memories extends Component {
 
 	render(){
 
-        function memoryList(){
-            this.state.memories.forEach((e,i,a) => {
-                return (
-                    <div className="unread_memory_envelop" onClick={this.openMemoryById}>
-                        <div className="new_memory_icon">New!</div>
-                        <div className="new_memory_triangle"></div>
-                        {/* <div className="open_new_memory"></div> */}
-                        <h1 className="memory_title">{e.memory_title}</h1>
-                        <h1 className="memory_sender_from">From:</h1>
-                        <h2 className="memory_sender">{e.sending_user_first} {e.sending_user_last}</h2>
-                    </div>
-                )
-            })
+        let memoryList = () => {
+                return this.state.memories.forEach((e,i,a) => {
+                    console.log(e)
+                    return (
+                        <div className="unread_memory_envelop" key={e.memory_id} onClick={this.openMemoryById}>
+                            <div className="new_memory_icon">New!</div>
+                            <div className="new_memory_triangle"></div>
+                            {/* <div className="open_new_memory"></div> */}
+                            <h1 className="memory_title">{e.memory_title}</h1>
+                            <h1 className="memory_sender_from">From:</h1>
+                            <h2 className="memory_sender">{e.sending_user_first} {e.sending_user_last}</h2>
+                        </div>
+                    )
+                })
         }
 
 		return (
 			<div className='Memories'>
 				<Header />
-                {/* {displayMemories} */}
-				 {this.state.memories ? memoryList : <p>no data</p>} 
+                 {memoryList} 
+				 {/* {this.state.memories ? memoryList() : <p>no data</p>}  */}
 			</div>
 		)
 	}

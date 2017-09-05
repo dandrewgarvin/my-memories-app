@@ -19,6 +19,8 @@
         }
         .unread_messages {
             color: $primary;
+            position: relative;
+            font-size: 22px;
         }
     }
     .button_container {
@@ -31,7 +33,6 @@
             width: 30px;
             border-radius: 50%;
             text-align: center;
-            padding-top: 2px;
             background: $secondary;
             position: absolute;
             right: 6%;

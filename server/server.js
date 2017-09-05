@@ -46,12 +46,6 @@ passport.use(new Auth0Strategy({
 
   const db = app.get('db');
 
-  //
-  // Fix the db response. Need to authenticate user using auth0 (mostly done)
-  // then store the user information in sessions. This will allow us to display
-  // all the user information on the front-end. Also needs to be stored in redux
-  // for easier access to the information.
-  //
 
   db.find_user([ profile._json.email ])
   .then( user => {
@@ -73,23 +67,19 @@ passport.use(new Auth0Strategy({
 
 passport.serializeUser(function(user, done){
     user = user.user
-    console.log("serialize", user)
+    // console.log("serialize", user)
     let sessionUser = {id: user.id, first: user.first_name, last: user.last_name, email: user.email}
-    console.log("sessionUser", sessionUser)
+    // console.log("sessionUser", sessionUser)
     done(null, sessionUser);
 })
 
 passport.deserializeUser(function(user, done){
-    console.log("deserialize", user)
+    // console.log("deserialize", user)
     app.get('db').find_session_user([user.id]).then( userDeserialize => {
-        console.log('user deserialization', userDeserialize)
+        // console.log('user deserialization', userDeserialize)
         done(null, userDeserialize[0]);
     })
 })
-
-
-// ===== CUSTOM MIDDLEWARE ===== //
-
 
 app.get('/auth', passport.authenticate('auth0'));
 
@@ -98,36 +88,65 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     failureRedirect: 'http://localhost:3000/#/'
 }))
 
+// ===== CUSTOM MIDDLEWARE ===== //
 
 app.get('/auth/me', (req, res, next) => {
-    console.log('req.SESSION', req.session)
+    // console.log('req.SESSION', req.session)
     console.log('req.USER', req.user)
-    console.log('req.SESIONSTORE', req.sessionStore)
+    // console.log('req.SESIONSTORE', req.sessionStore)
+    return res.status(200).send(req.user);
 
-    // if (!req.sessionStore.passport) {
-    //     // console.log('USER WAS NOT FOUND')
-    //     return res.status(404).send('User not found');
-    // } else {
-    //     // console.log(`SUCCESSFULLY STORED USER INFORMATION! USER_ID IS ${req.sessionStore.passport.user}`)
-        return res.status(200).send(req.user);
-    // }
 
 })
 
+app.get('/auth/logout', (req,res) => {
+    req.logOut();
+    return res.redirect(302, 'http://localhost:3000/#/')
+})
+
+const isAuthenticated = (req, res, next) => {
+    if (req.user.id) {
+        return next();
+    } else {
+        res.redirect('/#/');
+    }
+}
+
 // ========== ENDPOINTS ========== //
+
+// === REDIRECTS === //
+
 
 // === GET REQUESTS === //
 
-app.get('/api/getMemoriesByUser/:id', (req, res) => {
-    console.log('received request for user ' + req.params.id)
-    app.get('db').getMemoriesByUserId([req.params.id]).then((response) => {
+app.get('/api/getMemoriesByUser', (req, res) => {
+    console.log('received request for user ' + req.user.id)
+    app.get('db').getMemoriesByUserId([req.user.id]).then((response) => {
         return res.status(200).send(response);
+    })
+})
+
+app.get('/api/getUserInfo', (req, res) => {
+    console.log('user id is', req.user.id)
+    app.get('db').getUserInfo([req.user.id]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
+
+app.get('/api/totalUnreadMemoriesById', (req, res) => {
+    app.get('db').totalUnreadMemoriesById([req.user.id]).then((response) => {
+        return res.status(200).send(response[0])
     })
 })
 
 // === PUT REQUESTS === //
 
-
+app.put('/api/userHasViewedMemory/:id/:userId', (req, res) => {
+    console.log('user has viewed memory ' + req.params.id)
+    app.get('db').userHasViewedMemory([req.params.id, req.params.userId]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
 
 // === POST REQUESTS === //
 

@@ -163,7 +163,9 @@ button {
   font-family: 'Raleway', sans-serif;
   font-size: 20px; }
   .Landing p .unread_messages {
-    color: #fa7c92; }
+    color: #fa7c92;
+    position: relative;
+    font-size: 22px; }
 
 .Landing .button_container {
   display: flex;
@@ -175,7 +177,6 @@ button {
     width: 30px;
     border-radius: 50%;
     text-align: center;
-    padding-top: 2px;
     background: #6abbce;
     position: absolute;
     right: 6%;

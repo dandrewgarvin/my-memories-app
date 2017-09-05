@@ -36,7 +36,7 @@ export default class Header extends Component {
                 <Link className="menu_link_item" to="/memories" >View My Memories</Link >
                 <Link className="menu_link_item" to="/">Submit a Memory</Link >
                 <Link className="menu_link_item" to="/">Connect with a Loved One</Link >
-                <Link className="menu_link_item" to="/">Logout</Link >
+                <a className="menu_link_item" href="http://localhost:3001/auth/logout">Logout</a >
         </div>;
         let hamburgerOpen = <span onClick={this.buttonClicked} className="menu_open"></span>;
         let hamburgerClose = <span onClick={this.buttonClicked} className="menu_open active"></span>;

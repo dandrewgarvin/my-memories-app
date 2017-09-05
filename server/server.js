@@ -141,9 +141,10 @@ app.get('/api/totalUnreadMemoriesById', (req, res) => {
 
 // === PUT REQUESTS === //
 
-app.put('/api/userHasViewedMemory/:id/:userId', (req, res) => {
+app.put('/api/userHasViewedMemory/:id', (req, res) => {
+    
     console.log('user has viewed memory ' + req.params.id)
-    app.get('db').userHasViewedMemory([req.params.id, req.params.userId]).then((response) => {
+    app.get('db').userHasViewedMemory([req.params.id, req.user.id]).then((response) => {
         return res.status(200).send(response);
     })
 })

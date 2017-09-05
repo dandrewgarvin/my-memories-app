@@ -1,4 +1,13 @@
 .Memories {
+    .view_memory {
+        text-decoration: none;
+    }
+    .all_memories_seen {
+        color: $gray;
+        font-size: 30px;
+        text-align: center;
+        margin: 100px 30px;
+    }
     .unread_memory_envelop {
         border: 1px solid $primary;
         width: 80%;

@@ -16,9 +16,7 @@ class Landing extends Component {
 		axios.get(`/api/getUserInfo`).then((response) => {
 			response = response.data[0]
 			this.props.getUserInfo(response);
-			console.log('got user info!', this.props.user.id)
 			axios.get(`/api/totalUnreadMemoriesById`).then((response2) => {
-				console.log('got memories')
 				return this.props.totalUnreadMemoriesById(response2.data.count)
 			})
 		})

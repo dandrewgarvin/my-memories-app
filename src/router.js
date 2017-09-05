@@ -11,6 +11,7 @@ import { Switch, Route } from 'react-router-dom'
 import Login from './components/Login'
 import Landing from './components/Landing'
 import Memories from './components/Memories'
+import ViewMemory from './components/ViewMemory'
 
 export default (
 
@@ -19,6 +20,7 @@ export default (
         <Route path="/" exact component={Login} />
         <Route path="/home" component={Landing} />
         <Route path="/memories" component={Memories} />
+        <Route path="/view-memory" component={ViewMemory} />
         
     </Switch>
 

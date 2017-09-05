@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import axios from 'axios'
 
-import { getMemories } from '../ducks/reducer'
+import { getMemories, viewedMemory } from '../ducks/reducer'
 
 
 import '../styles/components/Main.css'
@@ -21,35 +21,43 @@ class Memories extends Component {
     }
 
     openMemoryById(data){
-        axios.put(`api/userHasViewedMemory/${data}/${this.props.user.id}`).then((response) => {
-            return this.props.getMemories(response.data);
+        axios.put(`api/userHasViewedMemory/${data.memory_id}`).then((response) => {
+            console.log('the data value is:', data)
+            this.props.viewedMemory(data);
+            return this.props.getMemories(response.data.memory_id);
         })
     }
     
 	render(){
 
-        let mappedMemories = this.props.memories.map((e,i,a) => {
-            return (
-                <div className="unread_memory_envelop" key={e.memory_id} onClick={this.openMemoryById.bind(this, e.memory_id)}>
-                    <div className="new_memory_icon">New!</div>
-                    <div className="new_memory_triangle"></div>
-                    {/* <div className="open_new_memory"></div> */}
-                    <h1 className="memory_title">{e.memory_title}</h1>
-                    <h1 className="memory_sender_from">From:</h1>
-                    <h2 className="memory_sender">{e.sending_user_first} {e.sending_user_last}</h2>
-                </div>
-            )
-        })
-
-
+        let memoryList = ()=> {
+            let mappedMemories
+            if (this.props.memories){
+                if (this.props.memories.length > 0) {
+                    mappedMemories = this.props.memories.map((e,i,a) => {
+                        return (
+                            <Link className="view_memory" to="/view-memory" key={e.memory_id}><div className="unread_memory_envelop" key={e.memory_id} onClick={this.openMemoryById.bind(this, e)}>
+                                <div className="new_memory_icon">New!</div>
+                                <div className="new_memory_triangle"></div>
+                                {/* <div className="open_new_memory"></div> */}
+                                <h1 className="memory_title">{e.memory_title}</h1>
+                                <h1 className="memory_sender_from">From:</h1>
+                                <h2 className="memory_sender">{e.sending_user_first} {e.sending_user_last}</h2>
+                            </div></Link >
+                        )
+                    })
+                } else mappedMemories = <h1 className="all_memories_seen">You have seen all of your memories!</h1>
+            }
+            else mappedMemories = <h1 className="all_memories_seen">No memories found. Please refresh the page.</h1>
+            return mappedMemories
+        }
 
 
 		return (
 			<div className='Memories'>
 				<Header />
-                 <div>
-				    {mappedMemories}  
-                 </div>
+                {memoryList()}
+                {/* {this.props.memories.length > 0 ? mappedMemories : <h1>No memories found. Try refreshing the page.</h1>} */}
 			</div>
 		)
 	}
@@ -60,7 +68,8 @@ function mapStateToProps(state) {
 }
 
 let updateActions = {
-	getMemories
+    getMemories,
+    viewedMemory
 }
 
 export default withRouter(connect(mapStateToProps, updateActions)(Memories));

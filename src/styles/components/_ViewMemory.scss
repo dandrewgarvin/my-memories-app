@@ -4,18 +4,40 @@
         padding: 5px;
         position: relative;
     }
+    .hidden_item {
+        position: relative;
+        height: auto;
+        width: auto;
+    }
     .memory_title {
         text-align: center;
         position: absolute;
         width: auto;
         background: darken($secondary, 10);
-        opacity: 0.75;
+        opacity: 0.85;
         padding: 3px;
         border-radius: 5px;
         color: white;
         text-transform: uppercase;
         font: {
-            size: 18px;
+            size: 14px;
+            family: 'Varela Round', sans-serif;
+        }
+    }
+    .memory_date {
+        text-align: center;
+        position: absolute;
+        bottom: 8px;
+        right: 5px;
+        width: auto;
+        background: darken($secondary, 10);
+        opacity: 0.85;
+        padding: 3px;
+        border-radius: 5px;
+        color: white;
+        text-transform: uppercase;
+        font: {
+            size: 14px;
             family: 'Varela Round', sans-serif;
         }
     }

@@ -48,7 +48,7 @@ class Memories extends Component {
                     })
                 } else mappedMemories = <h1 className="all_memories_seen">You have seen all of your memories!</h1>
             }
-            else mappedMemories = <h1 className="all_memories_seen">No memories found. Please refresh the page.</h1>
+            else mappedMemories = <h1 className="all_memories_seen">Loading...</h1>
             return mappedMemories
         }
 

@@ -332,7 +332,7 @@ button {
   .Memories .unread_memory_envelop .new_memory_triangle {
     z-index: -1;
     height: 0;
-    width: 0;
+    width: 20px;
     border-left: 127px solid transparent;
     border-top: 75px solid #fa7c92;
     border-right: 127px solid transparent;
@@ -359,17 +359,37 @@ button {
   padding: 5px;
   position: relative; }
 
+.ViewMemory .hidden_item {
+  position: relative;
+  height: auto;
+  width: auto; }
+
 .ViewMemory .memory_title {
   text-align: center;
   position: absolute;
   width: auto;
   background: #44a9c1;
-  opacity: 0.75;
+  opacity: 0.85;
   padding: 3px;
   border-radius: 5px;
   color: white;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 14px;
+  font-family: 'Varela Round', sans-serif; }
+
+.ViewMemory .memory_date {
+  text-align: center;
+  position: absolute;
+  bottom: 8px;
+  right: 5px;
+  width: auto;
+  background: #44a9c1;
+  opacity: 0.85;
+  padding: 3px;
+  border-radius: 5px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
   font-family: 'Varela Round', sans-serif; }
 
 .ViewMemory .view_memory_image {
@@ -388,3 +408,94 @@ button {
 .ViewMemory .color_text {
   color: #6abbce;
   font-weight: bold; }
+
+.UploadImage .upload_image {
+  position: relative;
+  border: 1px solid #fa7c92;
+  border-radius: 5px;
+  margin: 15px;
+  color: #6abbce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px; }
+  .UploadImage .upload_image .upload_image_button {
+    width: 175px; }
+
+.UploadImage .image_preview_container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.UploadImage .image_preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  z-index: 1; }
+
+.UploadImage .remove_image_preview {
+  color: #fa7c92;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #5e5e5e;
+  border-radius: 3px;
+  opacity: 0.8;
+  padding: 2px;
+  font-size: 16px;
+  z-index: 2; }
+
+.UploadImage .image_underlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #dddddd;
+  border-radius: 3px; }
+
+.UploadImage .text_container {
+  width: 100%;
+  height: auto;
+  padding: 15px; }
+
+.UploadImage .memory_text {
+  border: 1px solid #fa7c92;
+  border-radius: 5px;
+  color: #6abbce;
+  padding: 15px;
+  height: 150px;
+  width: 100%;
+  resize: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px; }
+  .UploadImage .memory_text ::placeholder {
+    color: #6abbce; }
+
+.UploadImage .button_container {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  justify-content: center; }
+
+.UploadImage .next_page_button {
+  background: #fa7c92;
+  width: 100%;
+  height: 50px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px; }

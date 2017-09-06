@@ -41,7 +41,7 @@ class Landing extends Component {
 				<div className="button_container">
 					<Link to="/memories" className="link">View My Memories</Link>
 					<div className="unseen_memories">{this.props.totalUnread}</div>
-					<Link to="/" className="button_send link">Send a Memory</Link>
+					<Link to="/upload" className="button_send link">Send a Memory</Link>
 				</div>
 			</div>
 		)

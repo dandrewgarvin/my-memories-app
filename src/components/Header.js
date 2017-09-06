@@ -34,7 +34,7 @@ export default class Header extends Component {
         let menuDiv = <div className="menu_div">
                 <Link className="menu_link_item" to="/home" >Go Home</Link >
                 <Link className="menu_link_item" to="/memories" >View My Memories</Link >
-                <Link className="menu_link_item" to="/">Submit a Memory</Link >
+                <Link className="menu_link_item" to="/upload">Submit a Memory</Link >
                 <Link className="menu_link_item" to="/">Connect with a Loved One</Link >
                 <a className="menu_link_item" href="http://localhost:3001/auth/logout">Logout</a >
         </div>;

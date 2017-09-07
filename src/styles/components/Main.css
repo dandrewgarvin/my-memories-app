@@ -490,7 +490,7 @@ button {
   padding: 15px;
   justify-content: center; }
 
-.UploadImage .next_page_button {
+.UploadImage .next_page_button, .UploadImage a {
   background: #fa7c92;
   width: 100%;
   height: 50px;
@@ -499,3 +499,67 @@ button {
   border-radius: 5px;
   font-family: 'Raleway', sans-serif;
   font-size: 20px; }
+
+.UploadMemory {
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif; }
+  .UploadMemory .select_loved_one_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; }
+    .UploadMemory .select_loved_one_container .select_loved_one {
+      color: #6abbce;
+      border: 1px solid #fa7c92;
+      border-radius: 5px;
+      width: 80%;
+      height: 60px;
+      font-size: 20px;
+      background: white;
+      padding-left: 15px; }
+  .UploadMemory label {
+    color: #6abbce;
+    font-size: 16px;
+    bottom: -8px;
+    background: white;
+    left: 10px;
+    padding: 2px;
+    position: relative; }
+  .UploadMemory .memory_date_container {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    margin-top: 40px;
+    justify-content: space-between; }
+    .UploadMemory .memory_date_container .memory_date_item {
+      color: #6abbce;
+      width: 30%;
+      height: 60px;
+      border: 1px solid #fa7c92;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 18px; }
+  .UploadMemory .memory_title_container {
+    width: 80%;
+    margin: auto;
+    margin-top: 40px; }
+    .UploadMemory .memory_title_container .memory_title {
+      color: #6abbce;
+      width: 100%;
+      height: 60px;
+      border: 1px solid #fa7c92;
+      border-radius: 5px;
+      padding-left: 15px;
+      font-size: 18px; }
+    .UploadMemory .memory_title_container .submit_memory_button {
+      background: #fa7c92;
+      width: 100%;
+      height: 70px;
+      margin-top: 70px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 20px;
+      font-family: 'Raleway', sans-serif; }

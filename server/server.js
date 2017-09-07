@@ -146,6 +146,12 @@ app.get('/api/totalUnreadMemoriesById', (req, res) => {
     })
 })
 
+app.get('/api/getRelationships', (req, res) => {
+    app.get('db').getRelationships([req.user.id]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
+
 // === PUT REQUESTS === //
 
 app.put('/api/userHasViewedMemory/:id', (req, res) => {
@@ -158,14 +164,7 @@ app.put('/api/userHasViewedMemory/:id', (req, res) => {
 
 // === POST REQUESTS === //
 
-// app.post('/api/uploadImage', (req, res) => {
-//     console.log('endpoint has been hit -- base64 correctly sent')
-//     let {imageUrl, memoryText} = req.body
-//     console.log(memoryText)
-
-//     res.status(200).send('image received');
-// })
-// ===== AWS IMAGE UPLOAD ===== //
+// == AWS IMAGE UPLOAD == //
 
 const s3 = new AWS.S3();
 app.post('/api/uploadImage', (req, res) => {

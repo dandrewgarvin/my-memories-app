@@ -6,7 +6,10 @@ const initialState = {
 	user: {
 		id: null
 	},
-	viewedMemory: {}
+	viewedMemory: {},
+	createMemoryInfo: {
+		hasData: false
+	}
 }
 
 // ===== VARIABLES - ACTION TYPES ===== //
@@ -15,6 +18,7 @@ const GET_MEMORIES = "GET_MEMORIES";
 const GET_USER_INFO = "GET_USER_INFO";
 const TOTAL_UNREAD_MEMORIES = "TOTAL_UNREAD_MEMORIES";
 const VIEWED_MEMORY = "VIEWED_MEMORY";
+const CREATE_MEMORY = "CREATE_MEMORY";
 
 // ===== REDUCER ===== //
 
@@ -28,6 +32,8 @@ export default function reducer (state = initialState, action) {
 			return Object.assign({}, state, {totalUnread: action.payload})
 		case VIEWED_MEMORY:
 			return Object.assign({}, state, {viewedMemory: action.payload})
+		case CREATE_MEMORY:
+			return Object.assign({}, state, {createMemoryInfo: action.payload})
 		default:
 			return state
 	}
@@ -60,5 +66,12 @@ export function viewedMemory(data){
 	return {
 		type: VIEWED_MEMORY,
 		payload: data
+	}
+}
+
+export function createMemory(memory){
+	return {
+		type: CREATE_MEMORY,
+		payload: memory
 	}
 }

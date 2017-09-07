@@ -13,6 +13,7 @@ import Landing from './components/Landing'
 import Memories from './components/Memories'
 import ViewMemory from './components/ViewMemory'
 import UploadImage from './components/UploadImage'
+import UploadMemory from './components/UploadMemory'
 
 export default (
 
@@ -23,6 +24,7 @@ export default (
         <Route path="/memories" component={Memories} />
         <Route path="/view-memory" component={ViewMemory} />
         <Route path="/upload" component={UploadImage} />
+        <Route path="/upload-2" component={UploadMemory} />
         
     </Switch>
 

@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios'
+
 
 import '../styles/components/Main.css'
 import Header from './Header'
+
+import { createMemory } from '../ducks/reducer'
 
 class UploadImage extends Component {
 
@@ -45,23 +48,20 @@ class UploadImage extends Component {
     }
 
     uploadFilesToApi(){
-        let imageUrl = this.state.imagePreviewUrl//.split(',')[1]
+        let imageUrl = this.state.imagePreviewUrl
         let memoryText = this.state.memoryText
         let imageFile = this.state.file.type
         let imageName = this.state.file.name
-
-        console.log('message: \'' + this.state.memoryText + '\'')
-        console.log('image:', {imageUrl})
-        console.log('file', imageName)
         //send base64 file to server with this axios call
 
-        axios.post('/api/uploadImage', {imageUrl, imageFile, imageName, memoryText}).then((response) => {
-            console.log(response)
-            this.setState({
-                imagePreviewUrl: '',
-                file: '',
-                memoryText: ''
-            })
+        axios.post('/api/uploadImage', {imageUrl, imageFile, imageName}).then((response) => {
+            let createMemoryInfo = {
+                img_url: response.data.Location,
+                memory_text: memoryText,
+                hasData: true
+            }
+
+            this.props.createMemory(createMemoryInfo);
         })
     }
 
@@ -97,7 +97,7 @@ class UploadImage extends Component {
                         <textarea className="memory_text" placeholder="The message you would like to send..." value={this.state.memoryText} onChange={this.updateTextValue.bind(this)}/>
                     </div>
                     <div className="button_container">
-                        <button className="next_page_button" onClick={this.uploadFilesToApi}>Next Page</button>
+                        <Link to="/upload-2"><button className="next_page_button" onClick={this.uploadFilesToApi}>Next Page</button></Link>
                     </div>
                 </main>
 			</div>
@@ -106,11 +106,13 @@ class UploadImage extends Component {
 }
 
 function mapStateToProps(state) {
-	return state
+	return {
+        createMemoryInfo: state.createMemoryInfo
+    }
 }
 
 let updateActions = {
-
+    createMemory
 }
 
 export default withRouter(connect(mapStateToProps, updateActions)(UploadImage));

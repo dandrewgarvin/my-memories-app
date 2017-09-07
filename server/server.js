@@ -5,6 +5,7 @@ const express = require('express'),
       passport = require('passport'),
       Auth0Strategy = require('passport-auth0'),
       massive = require('massive'),
+      AWS = require('aws-sdk'),
       config = require('./config'),
       app = express(),
       port = 3001;
@@ -15,7 +16,7 @@ const express = require('express'),
 // ===== TOP LEVEL MIDDLEWARE ===== //
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
 app.use(session({
     secret: config.SESSION_SECRET,
@@ -64,6 +65,12 @@ passport.use(new Auth0Strategy({
   })
 
 }));
+
+AWS.config.update({
+  accessKeyId: config.AWS_ACCESS_KEY,
+  secretAccessKey: config.AWS_SECRET_KEY,
+  region: config.AWS_REGION
+})
 
 passport.serializeUser(function(user, done){
     user = user.user
@@ -151,7 +158,35 @@ app.put('/api/userHasViewedMemory/:id', (req, res) => {
 
 // === POST REQUESTS === //
 
+// app.post('/api/uploadImage', (req, res) => {
+//     console.log('endpoint has been hit -- base64 correctly sent')
+//     let {imageUrl, memoryText} = req.body
+//     console.log(memoryText)
 
+//     res.status(200).send('image received');
+// })
+// ===== AWS IMAGE UPLOAD ===== //
+
+const s3 = new AWS.S3();
+app.post('/api/uploadImage', (req, res) => {
+    const buf = new Buffer(req.body.imageUrl.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+    console.log(req.body.imageName)
+
+  const bucketName = 'mymemoriesapp';
+  const params = {
+    Bucket: bucketName, //name of AWS s3 bucket
+    Key: req.body.imageName, //name of the image, including extension
+    Body: buf, //base64 encoded image
+    ContentType: req.body.imageFile, //type of file -- extension
+    ACL: 'public-read'
+  }
+
+  s3.upload(params, (err, data) => {
+   if (err) return res.status(500).send(err);
+   console.log('UPLOADED:', data);
+   res.status(200).json(data);
+ })
+})
 
 // === DELETE REQUESTS === //
 

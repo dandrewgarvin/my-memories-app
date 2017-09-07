@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
-import imgur from 'imgur'
 
 import '../styles/components/Main.css'
 import Header from './Header'
@@ -15,10 +14,11 @@ class UploadImage extends Component {
 
         this.state = {
             file: '',
-            imagePreviewUrl: ''
+            imagePreviewUrl: '',
+            memoryText: ''
         };
         this._handleImageChange = this._handleImageChange.bind(this);
-        this.uploadImageToApi = this.uploadImageToApi.bind(this)
+        this.uploadFilesToApi = this.uploadFilesToApi.bind(this)
     }
 
     _handleImageChange(e) {
@@ -44,24 +44,31 @@ class UploadImage extends Component {
         })
     }
 
-    uploadImageToApi(){
-        let imageUrl = this.state.imagePreviewUrl.split(',')[1]
-        // console.log(imageUrl[1])
+    uploadFilesToApi(){
+        let imageUrl = this.state.imagePreviewUrl//.split(',')[1]
+        let memoryText = this.state.memoryText
+        let imageFile = this.state.file.type
+        let imageName = this.state.file.name
 
-        // let headers = {
-        //     'Authorization': 'Client-ID 2d81fab970aaf19'
-        //     // , 'Authorization': 'Bearer 60a848b641ed593c91bb2a1ece1d9aa698076ce6'
-        // }
-        
-        imgur.setClientId('CLIENT-ID ');
-        
+        console.log('message: \'' + this.state.memoryText + '\'')
+        console.log('image:', {imageUrl})
+        console.log('file', imageName)
+        //send base64 file to server with this axios call
 
-        imgur.uploadBase64(imageUrl).then((response) => {
-            console.log(response.data)
-        }).catch((failed) => {
-            console.log('failed attempt', failed)
+        axios.post('/api/uploadImage', {imageUrl, imageFile, imageName, memoryText}).then((response) => {
+            console.log(response)
+            this.setState({
+                imagePreviewUrl: '',
+                file: '',
+                memoryText: ''
+            })
         })
-        
+    }
+
+    updateTextValue(e){
+        this.setState({
+            memoryText: e.target.value
+        })
     }
 
 	render(){
@@ -76,7 +83,6 @@ class UploadImage extends Component {
                     <h1 className="remove_image_preview" key="img" onClick={this.removeImage.bind(this)}>Remove Image</h1>
                 </div>
             );
-            console.log($imagePreview)
         }
 
 		return (
@@ -88,10 +94,10 @@ class UploadImage extends Component {
                         {$imagePreview}
                     </div>
                     <div className="text_container">
-                        <textarea className="memory_text" placeholder="The message you would like to send..."/>
+                        <textarea className="memory_text" placeholder="The message you would like to send..." value={this.state.memoryText} onChange={this.updateTextValue.bind(this)}/>
                     </div>
                     <div className="button_container">
-                        <button className="next_page_button" onClick={this.uploadImageToApi}>Next Page</button>
+                        <button className="next_page_button" onClick={this.uploadFilesToApi}>Next Page</button>
                     </div>
                 </main>
 			</div>

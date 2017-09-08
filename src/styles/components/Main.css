@@ -557,9 +557,26 @@ button {
       background: #fa7c92;
       width: 100%;
       height: 70px;
-      margin-top: 70px;
+      margin-top: 10px;
       border: none;
       border-radius: 10px;
       color: white;
       font-size: 20px;
       font-family: 'Raleway', sans-serif; }
+  .UploadMemory .false_data_container {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    position: relative;
+    margin-top: 30px; }
+    .UploadMemory .false_data_container .false_data {
+      color: red;
+      font-size: 14px;
+      text-align: center;
+      width: 80%; }
+
+.Success h1 {
+  color: #fa7c92; }
+
+.Failure h1 {
+  color: #fa7c92; }

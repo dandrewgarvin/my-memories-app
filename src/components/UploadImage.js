@@ -60,7 +60,6 @@ class UploadImage extends Component {
                 memory_text: memoryText,
                 hasData: true
             }
-
             this.props.createMemory(createMemoryInfo);
         })
     }

@@ -22,7 +22,6 @@ class Memories extends Component {
 
     openMemoryById(data){
         axios.put(`api/userHasViewedMemory/${data.memory_id}`).then((response) => {
-            console.log('the data value is:', data)
             this.props.viewedMemory(data);
             return this.props.getMemories(response.data.memory_id);
         })

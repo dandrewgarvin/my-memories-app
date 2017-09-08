@@ -164,6 +164,19 @@ app.put('/api/userHasViewedMemory/:id', (req, res) => {
 
 // === POST REQUESTS === //
 
+app.post('/api/submitMemory', (req, res) => {
+    console.log(req.body)
+    let meme = []
+    for (var prop in req.body){
+        meme.push(req.body[prop])
+    }
+    console.log('memory is:', meme)
+
+    app.get('db').createMemory(meme).then((response) => {
+        return res.status(200).send(response);
+    })
+})
+
 // == AWS IMAGE UPLOAD == //
 
 const s3 = new AWS.S3();

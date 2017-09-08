@@ -104,7 +104,6 @@ class UploadMemory extends Component {
                     falseEntry: false
                 })
                 if (this.state.memoryDate.day > 0 && this.state.memoryDate.month > 0 && this.state.memoryDate.year > 0){
-                    console.log(this.state)
                     let formattedMemory = []
                     let memeDate = this.state.memoryDate
                     for (var prop in memeDate){

@@ -96,7 +96,7 @@ class UploadImage extends Component {
                         <textarea className="memory_text" placeholder="The message you would like to send..." value={this.state.memoryText} onChange={this.updateTextValue.bind(this)}/>
                     </div>
                     <div className="button_container">
-                        <Link to="/upload-2"><button className="next_page_button" onClick={this.uploadFilesToApi}>Next Page</button></Link>
+                        <Link to="/upload-2" className="next_page_button"><button className="next_page_button" onClick={this.uploadFilesToApi}>Next Page</button></Link>
                     </div>
                 </main>
 			</div>

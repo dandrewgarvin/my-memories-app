@@ -47,20 +47,24 @@ passport.use(new Auth0Strategy({
 
   const db = app.get('db');
 
-
   db.find_user([ profile._json.email ])
   .then( user => {
-      console.log("user is:",user[0])
    if ( user[0] ) {
     //    console.log(user[0])
      return done( null, { user: user[0] } );
    }
     else {
-        db.create_user([ profile._json.given_name, profile._json.family_name, profile._json.email, profile.identities[0].user_id ])
-        .then( user => {
-            // console.log(user[0])
-            return done( null, { user: user[0] } );
-        })
+        if (profile.provider === 'auth0') {
+            db.create_user([ profile._json.user_metadata.first_name, profile._json.user_metadata.last_name, profile._json.email, profile.identities[0].user_id ])
+            .then( user => {
+                return done( null, { user: user[0] } );
+            })
+        } else {
+            db.create_user([ profile._json.given_name, profile._json.family_name, profile._json.email, profile.identities[0].user_id ])
+            .then( user => {
+                return done( null, { user: user[0] } );
+            })
+        }
     }
   })
 
@@ -74,16 +78,12 @@ AWS.config.update({
 
 passport.serializeUser(function(user, done){
     user = user.user
-    // console.log("serialize", user)
     let sessionUser = {id: user.id, first: user.first_name, last: user.last_name, email: user.email}
-    // console.log("sessionUser", sessionUser)
     done(null, sessionUser);
 })
 
 passport.deserializeUser(function(user, done){
-    // console.log("deserialize", user)
     app.get('db').find_session_user([user.id]).then( userDeserialize => {
-        // console.log('user deserialization', userDeserialize)
         done(null, userDeserialize[0]);
     })
 })
@@ -91,33 +91,24 @@ passport.deserializeUser(function(user, done){
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/home',
-    failureRedirect: 'http://localhost:3000/#/'
+    successRedirect: 'http://192.168.0.43:3000/#/home',
+    failureRedirect: 'http://192.168.0.43:3000/#/'
 }))
 
 // ===== CUSTOM MIDDLEWARE ===== //
 
 app.get('/auth/me', (req, res, next) => {
-    // console.log('req.SESSION', req.session)
     console.log('req.USER', req.user)
-    // console.log('req.SESIONSTORE', req.sessionStore)
     return res.status(200).send(req.user);
 
 
 })
 
 app.get('/auth/logout', (req,res) => {
+    console.log(`user ${req.user.id} has logged out`)
     req.logOut();
-    return res.redirect(302, 'http://localhost:3000/#/')
+    return res.redirect(302, 'http://192.168.0.43:3000/#/')
 })
-
-const isAuthenticated = (req, res, next) => {
-    if (req.user.id) {
-        return next();
-    } else {
-        res.redirect('/#/');
-    }
-}
 
 // ========== ENDPOINTS ========== //
 
@@ -127,14 +118,14 @@ const isAuthenticated = (req, res, next) => {
 // === GET REQUESTS === //
 
 app.get('/api/getMemoriesByUser', (req, res) => {
-    console.log('received request for user ' + req.user.id)
+    console.log(`user ${req.user.id} is viewing their memories`)
     app.get('db').getMemoriesByUserId([req.user.id]).then((response) => {
         return res.status(200).send(response);
     })
 })
 
 app.get('/api/getUserInfo', (req, res) => {
-    console.log('user id is', req.user.id)
+    console.log(`user ${req.user.id} has logged in`)
     app.get('db').getUserInfo([req.user.id]).then((response) => {
         return res.status(200).send(response);
     })
@@ -155,8 +146,7 @@ app.get('/api/getRelationships', (req, res) => {
 // === PUT REQUESTS === //
 
 app.put('/api/userHasViewedMemory/:id', (req, res) => {
-    
-    console.log('user has viewed memory ' + req.params.id)
+    console.log(`user ${req.user.id} has viewed a memory. ID: ${req.params.id}`)
     app.get('db').userHasViewedMemory([req.params.id, req.user.id]).then((response) => {
         return res.status(200).send(response);
     })
@@ -165,12 +155,11 @@ app.put('/api/userHasViewedMemory/:id', (req, res) => {
 // === POST REQUESTS === //
 
 app.post('/api/submitMemory', (req, res) => {
-    console.log(req.body)
     let meme = []
     for (var prop in req.body){
         meme.push(req.body[prop])
     }
-    console.log('memory is:', meme)
+    console.log(`user ${req.user.id} has submitted a memory to user ${meme[1]}`)
 
     app.get('db').createMemory(meme).then((response) => {
         return res.status(200).send(response);
@@ -182,7 +171,6 @@ app.post('/api/submitMemory', (req, res) => {
 const s3 = new AWS.S3();
 app.post('/api/uploadImage', (req, res) => {
     const buf = new Buffer(req.body.imageUrl.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-    console.log(req.body.imageName)
 
   const bucketName = 'mymemoriesapp';
   const params = {
@@ -195,7 +183,7 @@ app.post('/api/uploadImage', (req, res) => {
 
   s3.upload(params, (err, data) => {
    if (err) return res.status(500).send(err);
-   console.log('UPLOADED:', data);
+   console.log(`user ${req.user.id} has uploaded an image`)
    res.status(200).json(data);
  })
 })

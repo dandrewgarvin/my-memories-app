@@ -10,7 +10,8 @@ import axios from 'axios'
 class Login extends Component {
     
     loginButtonClicked() {
-        axios.get('http://localhost:3001/auth').then((response) => {
+        axios.get('/auth').then((response) => {
+            
         })
     }
 
@@ -24,8 +25,7 @@ class Login extends Component {
                     <p>Oops! It looks like you're not logged in.</p>
                     <p>To continue using MyMemories, please log in now!</p>
                     <section className="buttons">
-                        <a href="/auth"><button>Login</button></a>
-                        <a href=""><button id="sign_up_button">Sign Up</button></a>
+                        <a href="http://192.168.0.43:3001/auth"><button>Login or Sign Up</button></a>
                     </section>
                 </main>
 			</div>

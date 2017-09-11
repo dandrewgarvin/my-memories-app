@@ -22,6 +22,10 @@ class Landing extends Component {
 		})
 	}
 
+	componentDidMount(){
+		//fix user accepting request
+	}
+
 	// authenticate(){
 	// 	axios.get('/auth/me').then((response) => {
 	// 		console.log(response.data)

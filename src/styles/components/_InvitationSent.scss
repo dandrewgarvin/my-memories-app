@@ -1,0 +1,56 @@
+.InvitationSent {
+    h1 {
+        color: $secondary;
+        text-align: center;
+        margin: 50px;
+        font: {
+            family: 'Raleway', sans-serif;
+            size: 26px;
+            weight: 500;
+        }
+    }
+    .button_container {
+        height: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .connect_button {
+            margin: 10px;
+            width: 80%;
+            background: white;
+            border: 1px solid $primary;
+            border-radius: 10px;
+            height: 70px;
+            color: $primary;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font: {
+                family: 'Raleway', sans-serif;
+                size: 16px;
+                weight: 500;
+            }
+        }
+        .send_memory_button {
+            margin: 10px;
+            width: 80%;
+            background: $primary;
+            border: none;
+            border-radius: 10px;
+            height: 70px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font: {
+                family: 'Raleway', sans-serif;
+                size: 16px;
+                weight: 500;
+            }
+        }
+    }
+}

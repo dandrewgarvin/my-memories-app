@@ -151,6 +151,12 @@ app.get('/api/findUserConnection', (req, res) => {
     })
 })
 
+app.get('/api/getRequests', (req, res) => {
+    app.get('db').getRequests([req.user.id]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
+
 // === PUT REQUESTS === //
 
 app.put('/api/userHasViewedMemory/:id', (req, res) => {
@@ -175,17 +181,17 @@ app.post('/api/submitMemory', (req, res) => {
 })
 
 app.post('/api/newRelationship', (req, res) => {
-    console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status pending`)
 
     app.get('db').checkRelationship([req.user.id, req.body.userId]).then((response) => {
-        console.log(response)
         if (response.length > 0 || req.user.id === req.body.userId) {
+            console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status blocked -- relationship already exists`)
             return res.send({
                 status: 409,
                 message: "bad request - relationship already exists"
             });
         } else {
             app.get('db').newRelationship([req.user.id, req.body.userId]).then((response) => {
+                console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status pending -- relationship request sent`)
                 return res.status(200).send({
                     message: "good request - request was sent",
                     status: 200

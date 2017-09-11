@@ -746,3 +746,49 @@ button {
     height: 70px;
     font-family: 'Raleway', sans-serif;
     font-size: 20px; }
+
+.InvitationSent h1 {
+  color: #6abbce;
+  text-align: center;
+  margin: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 26px;
+  font-weight: 500; }
+
+.InvitationSent .button_container {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .InvitationSent .button_container .connect_button {
+    margin: 10px;
+    width: 80%;
+    background: white;
+    border: 1px solid #fa7c92;
+    border-radius: 10px;
+    height: 70px;
+    color: #fa7c92;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 500; }
+  .InvitationSent .button_container .send_memory_button {
+    margin: 10px;
+    width: 80%;
+    background: #fa7c92;
+    border: none;
+    border-radius: 10px;
+    height: 70px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 500; }

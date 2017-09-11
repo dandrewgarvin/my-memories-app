@@ -63,7 +63,6 @@ class NewConnection extends Component {
                 this.props.history.push('/invitation-sent')
             } else {
                 console.log(response.data.message)
-
             }
         })
 
@@ -109,6 +108,10 @@ class NewConnection extends Component {
             )
         }
 
+        let notWorking = ()=> {
+            alert('This feature is not currently working')
+        }
+
 		return (
 			<div className='NewConnection'>
 				<Header />
@@ -120,7 +123,7 @@ class NewConnection extends Component {
                     <hr className="separator" />
                     <section className="invite_new_container" >
                         <h1 className="invite_new_header">Loved one not found?</h1>
-                        <button className="invite_new_button">Invite New</button>
+                        <button className="invite_new_button" onClick={notWorking}>Invite New</button>
                     </section>
                 </main>
 			</div>

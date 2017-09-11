@@ -17,6 +17,7 @@ import UploadMemory from './components/UploadMemory'
 import Success from './components/Success'
 import Failure from './components/Failure'
 import NewConnection from './components/NewConnection'
+import InvitationSent from './components/InvitationSent'
 
 export default (
 
@@ -31,6 +32,7 @@ export default (
         <Route path="/success" component={Success} />
         <Route path="/failure" component={Failure} />
         <Route path="/connect" component={NewConnection} />
+        <Route path="/invitation-sent" component={InvitationSent} />
         
     </Switch>
 

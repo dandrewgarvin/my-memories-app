@@ -16,6 +16,7 @@ import UploadImage from './components/UploadImage'
 import UploadMemory from './components/UploadMemory'
 import Success from './components/Success'
 import Failure from './components/Failure'
+import NewConnection from './components/NewConnection'
 
 export default (
 
@@ -29,6 +30,7 @@ export default (
         <Route path="/upload-2" component={UploadMemory} />
         <Route path="/success" component={Success} />
         <Route path="/failure" component={Failure} />
+        <Route path="/connect" component={NewConnection} />
         
     </Switch>
 

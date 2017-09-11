@@ -7,6 +7,8 @@ import axios from 'axios'
 import '../styles/components/Main.css'
 import Header from './Header'
 
+import { submittedMemory } from '../ducks/reducer'
+
 class UploadMemory extends Component {
 
     constructor(){
@@ -124,11 +126,15 @@ class UploadMemory extends Component {
                         submissionDate: dateFormatted
                     }
 
+                    
+                    //redirect the user to the correct page, depending on success or failure
                     axios.post('/api/submitMemory', memoryFull).then((response) => {
-                        //redirect the user to the correct page, depending on success or failure
-                        this.props.history.push('/success')
-                    }).catch((error) => {
-                        this.props.history.push('/failure')
+                        if (response.data) {
+                            this.props.submittedMemory(memoryFull)
+                            this.props.history.push('/success')
+                        } else {
+                            this.props.history.push('/failure')
+                        }
                     })
                 } else {
                     this.setState({
@@ -189,7 +195,7 @@ function mapStateToProps(state) {
 }
 
 let updateActions = {
-
+    submittedMemory
 }
 
 export default withRouter(connect(mapStateToProps, updateActions)(UploadMemory));

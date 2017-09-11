@@ -1,5 +1,33 @@
 .Failure {
-    h1 {
+    .failure_text {
+        color: $secondary;
+        text-align: center;
+        margin-top: 40px;
+        font: {
+            size: 24px;
+        }
+    }
+    .error_code {
         color: $primary;
+    }
+    .button_container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 120px;
+        padding-bottom: 20px;
+        .home_button {
+            background: $primary;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            width: 80%;
+            height: 60px;
+            font: {
+                size: 18px;
+            }
+        }
     }
 }

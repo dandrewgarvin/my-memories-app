@@ -143,6 +143,12 @@ app.get('/api/getRelationships', (req, res) => {
     })
 })
 
+app.get('/api/findUserConnection', (req, res) => {
+    app.get('db').findUserConnection([req.query.input]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
+
 // === PUT REQUESTS === //
 
 app.put('/api/userHasViewedMemory/:id', (req, res) => {

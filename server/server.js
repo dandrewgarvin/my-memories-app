@@ -55,12 +55,14 @@ passport.use(new Auth0Strategy({
    }
     else {
         if (profile.provider === 'auth0') {
-            db.create_user([ profile._json.user_metadata.first_name, profile._json.user_metadata.last_name, profile._json.email, profile.identities[0].user_id ])
+            let date = new Date()
+            db.create_user([ profile._json.user_metadata.first_name, profile._json.user_metadata.last_name, profile._json.email, profile.identities[0].user_id, date ])
             .then( user => {
                 return done( null, { user: user[0] } );
             })
         } else {
-            db.create_user([ profile._json.given_name, profile._json.family_name, profile._json.email, profile.identities[0].user_id ])
+            let date = new Date()
+            db.create_user([ profile._json.given_name, profile._json.family_name, profile._json.email, profile.identities[0].user_id, date ])
             .then( user => {
                 return done( null, { user: user[0] } );
             })
@@ -169,6 +171,27 @@ app.post('/api/submitMemory', (req, res) => {
 
     app.get('db').createMemory(meme).then((response) => {
         return res.status(200).send(response);
+    })
+})
+
+app.post('/api/newRelationship', (req, res) => {
+    console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status pending`)
+
+    app.get('db').checkRelationship([req.user.id, req.body.userId]).then((response) => {
+        console.log(response)
+        if (response.length > 0 || req.user.id === req.body.userId) {
+            return res.send({
+                status: 409,
+                message: "bad request - relationship already exists"
+            });
+        } else {
+            app.get('db').newRelationship([req.user.id, req.body.userId]).then((response) => {
+                return res.status(200).send({
+                    message: "good request - request was sent",
+                    status: 200
+                });
+            })
+        }
     })
 })
 

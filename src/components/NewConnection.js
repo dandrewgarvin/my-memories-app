@@ -21,6 +21,7 @@ class NewConnection extends Component {
             userId: ''
         }
         this.handleUserChangeSelection = this.handleUserChangeSelection.bind(this)
+        this.handleConnectClick = this.handleConnectClick.bind(this)
     }
 
     handleUserInput(e){
@@ -50,6 +51,22 @@ class NewConnection extends Component {
             userSelected: false,
             userSearchInput: ''
         })
+    }
+
+    handleConnectClick(){
+        // connect to server/db to see if relationship already exists. If it does, let the user know they're already connected
+            // possible redirect to submit memory page
+        // connect to server/db to make a new relationship. the user_one_id is the user on session, and the user_two_id is this.state.userId
+        let relationshipInfo = {userId: this.state.userId}
+        axios.post('/api/newRelationship', relationshipInfo).then((response) => {
+            if (response.data.status === 200) {
+                this.props.history.push('/invitation-sent')
+            } else {
+                console.log(response.data.message)
+
+            }
+        })
+
     }
 
 	render(){
@@ -97,6 +114,14 @@ class NewConnection extends Component {
 				<Header />
                 <main>
                     {this.state.userSelected ? foundUser() : findUser()}
+                    <section className="submit_buttons_container">
+                        <button className="connect_button" onClick={this.handleConnectClick}>Connect to User</button>
+                    </section>
+                    <hr className="separator" />
+                    <section className="invite_new_container" >
+                        <h1 className="invite_new_header">Loved one not found?</h1>
+                        <button className="invite_new_button">Invite New</button>
+                    </section>
                 </main>
 			</div>
 		)

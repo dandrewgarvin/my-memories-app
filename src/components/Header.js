@@ -44,6 +44,13 @@ export default class Header extends Component {
 		return (
 			<div className='Header'>
                 <img src={logo} alt="MyMemories Logo" />
+                <div className="menu_div_desktop">
+                        <Link className="menu_link_item_desktop" to="/home" >Go Home</Link >
+                        <Link className="menu_link_item_desktop" to="/memories">View My Memories</Link >
+                        <Link className="menu_link_item_desktop" to="/upload">Submit a Memory</Link >
+                        <Link className="menu_link_item_desktop" to="/connect">Connect with a Loved One</Link >
+                        <a className="menu_link_item_desktop" href="http://192.168.0.43:3001/auth/logout">Logout</a >
+                </div>
                 {this.state.menuOpen ? hamburgerClose : hamburgerOpen}
                 {this.state.menuOpen ? menuDivShadow : null}
                 {this.state.menuOpen ? menuDiv : null}

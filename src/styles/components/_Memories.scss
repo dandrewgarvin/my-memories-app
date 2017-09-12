@@ -34,10 +34,11 @@
         .new_memory_triangle {
             z-index: -1;
             height: 0;
-            width: 20px;
-            border-left: 127px solid transparent;
+            width: 0;
+            margin: auto;
+            border-left: calc(100vw * .8 / 2) solid transparent;
             border-top: 75px solid $primary;
-            border-right: 127px solid transparent;
+            border-right: calc(100vw * .8 / 2) solid transparent;
             position: relative;
         }
     }
@@ -56,5 +57,68 @@
         font-size: 22px;
         color: $secondary;
         margin-top: 5px;
+    }
+}
+
+@media(min-width: 450px) {
+    .Memories {
+        .unread_memory_envelop {
+            height: 200px;
+        }
+        .memory_title {
+            font-size: 18px;
+        }
+        .memory_sender_from {
+            margin-top: 65px;
+            font-size: 18px;
+        }
+        .memory_sender {
+            font-size: 26px;
+            margin-top: 10px;
+        }
+    }
+}
+
+@media(min-width: 700px) {
+    .Memories {
+        .unread_memory_envelop {
+            height: 260px;
+            .new_memory_icon {
+                right: -40px;
+                top: -25px;
+                height: 50px;
+                width: 80px;
+                font-size: 20px;
+            }
+            .new_memory_triangle {
+                border-top: 100px solid $primary;
+            }
+        }
+        .memory_title {
+            font-size: 22px;
+            margin-top: -80px;
+        }
+        .memory_sender_from {
+            margin-top: 90px;
+            font-size: 22px;
+        }
+        .memory_sender {
+            font-size: 34px;
+            margin-top: 10px;
+        }
+    }
+}
+
+@media(min-width: 1024px) {
+    .Memories {
+        .unread_memory_envelop {
+            height: 320px;
+            .new_memory_triangle {
+                border-top: 100px solid $primary;
+            }
+        }
+        .memory_sender_from {
+            margin-top: 110px;
+        }
     }
 }

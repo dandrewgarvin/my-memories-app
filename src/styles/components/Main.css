@@ -210,20 +210,9 @@ button {
   justify-content: center;
   flex-wrap: wrap;
   position: relative; }
-  .Landing .button_container .unseen_memories {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    text-align: center;
-    background: #6abbce;
-    position: absolute;
-    right: 6%;
-    color: white;
-    border: 1px solid #fa7c92;
-    font-size: 22px;
-    font-family: 'Raleway', sans-serif; }
 
 .Landing .link {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -239,6 +228,19 @@ button {
   font-family: 'Raleway', sans-serif;
   margin: 15px;
   font-weight: 500; }
+  .Landing .link .unseen_memories {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    text-align: center;
+    background: #6abbce;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    color: white;
+    border: 1px solid #fa7c92;
+    font-size: 22px;
+    font-family: 'Raleway', sans-serif; }
 
 .Landing .button_send {
   background: #fa7c92;
@@ -370,10 +372,11 @@ button {
   .Memories .unread_memory_envelop .new_memory_triangle {
     z-index: -1;
     height: 0;
-    width: 20px;
-    border-left: 127px solid transparent;
+    width: 0;
+    margin: auto;
+    border-left: calc(100vw * .8 / 2) solid transparent;
     border-top: 75px solid #fa7c92;
-    border-right: 127px solid transparent;
+    border-right: calc(100vw * .8 / 2) solid transparent;
     position: relative; }
 
 .Memories .memory_title {
@@ -391,6 +394,47 @@ button {
   font-size: 22px;
   color: #6abbce;
   margin-top: 5px; }
+
+@media (min-width: 450px) {
+  .Memories .unread_memory_envelop {
+    height: 200px; }
+  .Memories .memory_title {
+    font-size: 18px; }
+  .Memories .memory_sender_from {
+    margin-top: 65px;
+    font-size: 18px; }
+  .Memories .memory_sender {
+    font-size: 26px;
+    margin-top: 10px; } }
+
+@media (min-width: 700px) {
+  .Memories .unread_memory_envelop {
+    height: 260px; }
+    .Memories .unread_memory_envelop .new_memory_icon {
+      right: -40px;
+      top: -25px;
+      height: 50px;
+      width: 80px;
+      font-size: 20px; }
+    .Memories .unread_memory_envelop .new_memory_triangle {
+      border-top: 100px solid #fa7c92; }
+  .Memories .memory_title {
+    font-size: 22px;
+    margin-top: -80px; }
+  .Memories .memory_sender_from {
+    margin-top: 90px;
+    font-size: 22px; }
+  .Memories .memory_sender {
+    font-size: 34px;
+    margin-top: 10px; } }
+
+@media (min-width: 1024px) {
+  .Memories .unread_memory_envelop {
+    height: 320px; }
+    .Memories .unread_memory_envelop .new_memory_triangle {
+      border-top: 100px solid #fa7c92; }
+  .Memories .memory_sender_from {
+    margin-top: 110px; } }
 
 .ViewMemory .image_container {
   width: 100%;
@@ -772,6 +816,7 @@ button {
   .NewConnection .invite_new_container .invite_new_header {
     color: #6abbce;
     text-align: center;
+    width: 100%;
     font-family: 'Raleway', sans-serif;
     font-size: 18px; }
   .NewConnection .invite_new_container .invite_new_button {

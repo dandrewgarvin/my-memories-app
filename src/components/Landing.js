@@ -88,8 +88,7 @@ class Landing extends Component {
 				<p>You currently have <span className="unread_messages">{this.props.totalUnread}</span> unseen memories.</p>
 				{this.props.totalUnread > 0 ? <p>Check them out below!</p> : null}
 				<div className="button_container">
-					<Link to="/memories" className="link">View My Memories</Link>
-					<div className="unseen_memories">{this.props.totalUnread}</div>
+					<Link to="/memories" className="link">View My Memories<div className="unseen_memories">{this.props.totalUnread}</div></Link>
 					<Link to="/upload" className="button_send link">Send a Memory</Link>
 				</div>
 			</div>

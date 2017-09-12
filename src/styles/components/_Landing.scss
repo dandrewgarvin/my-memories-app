@@ -72,21 +72,9 @@
         justify-content: center;
         flex-wrap: wrap;
         position: relative;
-        .unseen_memories {
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            text-align: center;
-            background: $secondary;
-            position: absolute;
-            right: 6%;
-            color: white;
-            border: 1px solid $primary;
-            font-size: 22px;
-            font-family: 'Raleway', sans-serif;
-        }
     }
     .link {
+        position: relative;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -102,6 +90,20 @@
         font-family: 'Raleway', sans-serif;
         margin: 15px;
         font-weight: 500;
+        .unseen_memories {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            text-align: center;
+            background: $secondary;
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            color: white;
+            border: 1px solid $primary;
+            font-size: 22px;
+            font-family: 'Raleway', sans-serif;
+        }
     }
     .button_send {
         background: $primary;

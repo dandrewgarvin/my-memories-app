@@ -12,9 +12,10 @@ import Header from './Header'
 
 class Memories extends Component {
 
-
-
     componentWillMount(){
+        if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
         axios.get(`/api/getMemoriesByUser`).then((response) => {
             return this.props.getMemories(response.data);
         })

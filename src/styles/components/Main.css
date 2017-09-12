@@ -148,6 +148,44 @@ button {
         background: #fa7c92;
         color: #fff; }
 
+.Landing .friend_request {
+  position: absolute;
+  width: 90%;
+  height: auto;
+  padding: 20px 0;
+  top: 100px;
+  background: white;
+  box-shadow: 0px 2px 15px 2px #fcadbb;
+  left: 5%;
+  z-index: 1;
+  color: #777; }
+
+.Landing .friend_request_mapped {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: scroll; }
+  .Landing .friend_request_mapped .friend_request_info {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Varela Round', sans-serif; }
+  .Landing .friend_request_mapped .accept, .Landing .friend_request_mapped .reject {
+    background: #00cd00;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    height: 40px;
+    width: 100px;
+    font-size: 14px;
+    margin-bottom: 30px; }
+  .Landing .friend_request_mapped .reject {
+    background: #ff4d4d; }
+
+.Landing .id_color_change {
+  color: #fa7c92; }
+
 .Landing h1 {
   color: #6abbce;
   text-align: center;

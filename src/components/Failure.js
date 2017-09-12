@@ -14,6 +14,12 @@ class Failure extends Component {
 		this.handleHomeClick = this.handleHomeClick.bind(this)
 	}
 
+	componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
+    }
+
 	handleHomeClick(){
 		this.props.history.push('/home')
 	}

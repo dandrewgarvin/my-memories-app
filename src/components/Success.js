@@ -15,6 +15,12 @@ class Success extends Component {
 		this.handleSubmitClick = this.handleSubmitClick.bind(this)
 	}
 
+	componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
+    }
+
 	handleHomeClick(){
 		this.props.history.push('/home')
 	}

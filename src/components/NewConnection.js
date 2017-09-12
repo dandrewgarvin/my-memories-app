@@ -24,6 +24,12 @@ class NewConnection extends Component {
         this.handleConnectClick = this.handleConnectClick.bind(this)
     }
 
+    componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
+    }
+
     handleUserInput(e){
         this.setState({
             userSearchInput: e.target.value
@@ -62,7 +68,7 @@ class NewConnection extends Component {
             if (response.data.status === 200) {
                 this.props.history.push('/invitation-sent')
             } else {
-                console.log(response.data.message)
+                alert(response.data.message)
             }
         })
 

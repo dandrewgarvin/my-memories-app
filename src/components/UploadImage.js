@@ -24,6 +24,12 @@ class UploadImage extends Component {
         this.uploadFilesToApi = this.uploadFilesToApi.bind(this)
     }
 
+    componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
+    }
+
     _handleImageChange(e) {
         e.preventDefault();
 
@@ -105,9 +111,7 @@ class UploadImage extends Component {
 }
 
 function mapStateToProps(state) {
-	return {
-        createMemoryInfo: state.createMemoryInfo
-    }
+	return state
 }
 
 let updateActions = {

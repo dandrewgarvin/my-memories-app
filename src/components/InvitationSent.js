@@ -9,6 +9,12 @@ import Header from './Header'
 
 class InvitationSent extends Component {
 
+    componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
+    }
+
 	render(){
 
 		return (

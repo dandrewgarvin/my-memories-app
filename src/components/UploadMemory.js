@@ -18,8 +18,8 @@ class UploadMemory extends Component {
             relationships: [],
             recipient: null,
             memoryDate: {
-                day: null,
                 month: null,
+                day: null,
                 year: null
             },
             title: '',
@@ -29,6 +29,9 @@ class UploadMemory extends Component {
     }
 
     componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
         axios.get('/api/getRelationships').then((response) => {
             this.setState({
                 relationships: response.data
@@ -118,7 +121,7 @@ class UploadMemory extends Component {
                     // create object of the full memory, then send it to server/db
                     let memoryFull = {
                         sendingUserId: this.props.user.id, // current user id
-                        receivingUserId: +this.state.recipient.id, 
+                        receivingUserId: +this.state.recipient.id,
                         memoryTitle: this.state.title,
                         memoryText: this.props.createMemoryInfo.memory_text,
                         memoryDate: formattedMemory,
@@ -156,9 +159,17 @@ class UploadMemory extends Component {
 	render(){
 
         let selectionList = this.state.relationships.map((e,i,a) => {
-            return (
-                <option key={i} id={e.user_two_id}>{e.first_name} {e.last_name} [{e.user_two_id}]</option>
-            )
+            
+            if (e.first_name === this.props.user.first_name && e.last_name === this.props.user.last_name) return null
+            if (this.props.user.id === e.user_one_id) {
+                return (
+                    <option key={i} id={e.user_two_id}>{e.first_name} {e.last_name} [{e.user_two_id}]</option>
+                )
+            } else {
+                return (
+                    <option key={i} id={e.user_one_id}>{e.first_name} {e.last_name} [{e.user_one_id}]</option>
+                )
+            }
         })
 
 		return (
@@ -173,8 +184,8 @@ class UploadMemory extends Component {
                         </select>
                     </div>
                     <div className="memory_date_container">
-                        <input className="memory_date_item" name="day" placeholder="dd" maxLength="2" onChange={this.handleDateChange.bind(this)}/>
                         <input className="memory_date_item" name="month" placeholder="mm" maxLength="2" onChange={this.handleDateChange.bind(this)}/>
+                        <input className="memory_date_item" name="day" placeholder="dd" maxLength="2" onChange={this.handleDateChange.bind(this)}/>
                         <input className="memory_date_item" name="year" placeholder="yyyy" maxLength="4" onChange={this.handleDateChange.bind(this)}/>
                     </div>
                     <div className="memory_title_container">

@@ -127,6 +127,12 @@ app.get('/api/getMemoriesByUser', (req, res) => {
 })
 
 app.get('/api/getUserInfo', (req, res) => {
+    if (!req.user) {
+        return res.status(200).send({
+            message: 'not logged in',
+            status: 400
+        });
+    }
     console.log(`user ${req.user.id} has logged in`)
     app.get('db').getUserInfo([req.user.id]).then((response) => {
         return res.status(200).send(response);
@@ -166,6 +172,13 @@ app.put('/api/userHasViewedMemory/:id', (req, res) => {
     })
 })
 
+app.put('/api/updateRequest', (req, res) => {
+    app.get('db').updateRequest([req.body.relationshipStatus, req.body.relationshipId, req.user.id]).then((response) => {
+        res.status(200).send(response);
+    })
+
+})
+
 // === POST REQUESTS === //
 
 app.post('/api/submitMemory', (req, res) => {
@@ -182,15 +195,19 @@ app.post('/api/submitMemory', (req, res) => {
 
 app.post('/api/newRelationship', (req, res) => {
 
-    app.get('db').checkRelationship([req.user.id, req.body.userId]).then((response) => {
+    let userIds = [];
+    if (req.user.id > req.body.userId) userIds = [req.body.userId, req.user.id]
+    else userIds = [req.user.id, req.body.userId]
+
+    app.get('db').checkRelationship(userIds).then((response) => {
         if (response.length > 0 || req.user.id === req.body.userId) {
             console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status blocked -- relationship already exists`)
             return res.send({
                 status: 409,
-                message: "bad request - relationship already exists"
+                message: "That relationship already exists. Choose another user."
             });
         } else {
-            app.get('db').newRelationship([req.user.id, req.body.userId]).then((response) => {
+            app.get('db').newRelationship(userIds).then((response) => {
                 console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status pending -- relationship request sent`)
                 return res.status(200).send({
                     message: "good request - request was sent",

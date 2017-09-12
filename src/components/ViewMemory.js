@@ -24,6 +24,12 @@ class ViewMemory extends Component {
     //     }, 5000)
     // }
 
+    componentWillMount(){
+		if (!this.props.user.id) {
+			return this.props.history.push('/')
+		}
+    }
+
 	render(){
         const timestamps = (toFormat) => {
             if (toFormat) {

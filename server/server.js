@@ -158,9 +158,11 @@ app.get('/api/findUserConnection', (req, res) => {
 })
 
 app.get('/api/getRequests', (req, res) => {
-    app.get('db').getRequests([req.user.id]).then((response) => {
-        return res.status(200).send(response);
-    })
+    if (req.user) {
+        app.get('db').getRequests([req.user.id]).then((response) => {
+            return res.status(200).send(response);
+        })
+    }
 })
 
 // === PUT REQUESTS === //
@@ -174,9 +176,9 @@ app.put('/api/userHasViewedMemory/:id', (req, res) => {
 
 app.put('/api/updateRequest', (req, res) => {
     app.get('db').updateRequest([req.body.relationshipStatus, req.body.relationshipId, req.user.id]).then((response) => {
+        console.log(`relationship status changed. user ${req.user.id} acted on relationship id ${req.body.relationshipStatus}`)
         res.status(200).send(response);
     })
-
 })
 
 // === POST REQUESTS === //
@@ -207,7 +209,7 @@ app.post('/api/newRelationship', (req, res) => {
                 message: "That relationship already exists. Choose another user."
             });
         } else {
-            app.get('db').newRelationship(userIds).then((response) => {
+            app.get('db').newRelationship([...userIds, req.user.id]).then((response) => {
                 console.log(`relationship request: Sent from user ${req.user.id} to user ${req.body.userId} -- status pending -- relationship request sent`)
                 return res.status(200).send({
                     message: "good request - request was sent",

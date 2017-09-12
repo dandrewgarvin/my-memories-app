@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+
 /* 
  * This is the router file. Import this into the App.jsx file for it to be used.
  * Also import all pages into this file to enable routing. 
@@ -19,21 +20,20 @@ import Failure from './components/Failure'
 import NewConnection from './components/NewConnection'
 import InvitationSent from './components/InvitationSent'
 
+
 export default (
 
-    <Switch>
-        
-        <Route path="/" exact component={Login} />
-        <Route path="/home" component={Landing} />
-        <Route path="/memories" component={Memories} />
-        <Route path="/view-memory" component={ViewMemory} />
-        <Route path="/upload" component={UploadImage} />
-        <Route path="/upload-2" component={UploadMemory} />
-        <Route path="/success" component={Success} />
-        <Route path="/failure" component={Failure} />
-        <Route path="/connect" component={NewConnection} />
-        <Route path="/invitation-sent" component={InvitationSent} />
-        
-    </Switch>
-
+        <Switch>
+            <Route path="/" exact component={Login}/>
+            <Route path="/home" component={Landing} />
+            <Route path="/memories" component={Memories} />
+            <Route path="/view-memory" component={ViewMemory} />
+            <Route path="/upload" component={UploadImage} />
+            <Route path="/upload-2" component={UploadMemory} />
+            <Route path="/success" component={Success} />
+            <Route path="/failure" component={Failure} />
+            <Route path="/connect" component={NewConnection} />
+            <Route path="/invitation-sent" component={InvitationSent} />
+            
+        </Switch>
 )

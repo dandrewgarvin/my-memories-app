@@ -21,4 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 node_modules
 
-/server/config.js
+/config.js
+.env

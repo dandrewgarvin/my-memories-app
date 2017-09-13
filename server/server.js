@@ -1,3 +1,5 @@
+require ('dotenv').config();
+
 const express = require('express'),
       bodyParser = require('body-parser'),
       cors = require('cors'),
@@ -6,7 +8,6 @@ const express = require('express'),
       Auth0Strategy = require('passport-auth0'),
       massive = require('massive'),
       AWS = require('aws-sdk'),
-      config = require('./config'),
       app = express(),
       port = 3001;
 
@@ -19,17 +20,17 @@ const express = require('express'),
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
 app.use(session({
-    secret: config.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));
 
 massive({
-  host: config.DB_HOST,
-  port: config.DB_PORT,
-  database: config.DB_DATABASE,
-  user: config.DB_USER,
-  password: config.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   ssl: true
 }).then( db => {
   app.set('db', db);
@@ -39,10 +40,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new Auth0Strategy({
-  domain: config.AUTH_DOMAIN,
-  clientID: config.AUTH_CLIENT_ID,
-  clientSecret: config.AUTH_CLIENT_SECRET,
-  callbackURL: config.AUTH_CALLBACK
+  domain: process.env.AUTH_DOMAIN,
+  clientID: process.env.AUTH_CLIENT_ID,
+  clientSecret: process.env.AUTH_CLIENT_SECRET,
+  callbackURL: process.env.AUTH_CALLBACK
 }, function(accessToken, refreshToken, extraParams, profile, done) {
 
   const db = app.get('db');
@@ -73,9 +74,9 @@ passport.use(new Auth0Strategy({
 }));
 
 AWS.config.update({
-  accessKeyId: config.AWS_ACCESS_KEY,
-  secretAccessKey: config.AWS_SECRET_KEY,
-  region: config.AWS_REGION
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_KEY,
+  region: process.env.AWS_REGION
 })
 
 passport.serializeUser(function(user, done){

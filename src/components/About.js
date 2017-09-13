@@ -30,7 +30,7 @@ class About extends Component {
                     </section>
                     <section className="Founders">
                         <h1>About the Founders</h1>
-                        <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAsQAAAAJGU2NzdkMjliLTdkNzgtNGE4Zi1iZjliLWIzNGViOTQxNTg1ZA.jpg"/>
+                        <img alt="profile_pic" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAsQAAAAJGU2NzdkMjliLTdkNzgtNGE4Zi1iZjliLWIzNGViOTQxNTg1ZA.jpg"/>
                         <h2 className="AboutAndrew">Andrew Garvin</h2>
                         <p>
                             Andrew spent the first 18 years of his life moving all across the Wasatch Front, though his heart lies in Cache Valley, Utah.<br/><br/>
@@ -39,7 +39,7 @@ class About extends Component {
                             His greatest desire is to enable and empower those around him to be successful, and he feels that the path he is on will help him have a greater ability to do so.<br/><br/>
                             <span className="bolded">*** Andrew was the lead developer of the MyMemories Web Application ***</span>
                         </p>
-                        <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAxsAAAAJGQ0OWMxMzYzLWE5NWItNDcwMi1hOWEyLWVhOTFmMDljZTVhMA.jpg"/>
+                        <img alt="profile_pic" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAxsAAAAJGQ0OWMxMzYzLWE5NWItNDcwMi1hOWEyLWVhOTFmMDljZTVhMA.jpg"/>
                         <h2 className="AboutBenjamin">Benjamin Pelo</h2>
                         <p>
                             Ben grew up in the small Utah community of Heber. From a small age, he learned all about business from his dad, who had founded several successful companies including Folio, Ancestry, and iTV.<br/><br/>
@@ -72,20 +72,20 @@ class About extends Component {
                         <h1>Technology</h1>
                         <h2>For this project, I used the following technologies for the front-end:</h2>
                         <ul>
-                            <li>React<img src="http://ecodile.com/wp-content/uploads/2016/08/react-logo-1000-transparent.png"/></li>
-                            <li>Redux<img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png"/></li>
-                            <li>Router<img src="https://cdn.worldvectorlogo.com/logos/react-router.svg"/></li>
+                            <li>React<img alt="logo" src="http://ecodile.com/wp-content/uploads/2016/08/react-logo-1000-transparent.png"/></li>
+                            <li>Redux<img alt="logo" src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png"/></li>
+                            <li>Router<img alt="logo" src="https://cdn.worldvectorlogo.com/logos/react-router.svg"/></li>
                             <li>Axios</li>
-                            <li>SASS (SCSS)<img src="http://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png"/></li>
+                            <li>SASS (SCSS)<img alt="logo" src="http://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png"/></li>
                         </ul>
                             <h2>To complete the stack, the following were used for the back-end:</h2>
                         <ul>
-                            <li>Node<img src="http://ecodile.com/wp-content/uploads/2015/10/node_icon2.png"/></li>
+                            <li>Node<img alt="logo" src="http://ecodile.com/wp-content/uploads/2015/10/node_icon2.png"/></li>
                             <li>Express</li>
-                            <li>Passport-Auth0<img src="https://avatars1.githubusercontent.com/u/2824157?v=4&s=400"/></li>
+                            <li>Passport-Auth0<img alt="logo" src="https://avatars1.githubusercontent.com/u/2824157?v=4&s=400"/></li>
                             <li>Massive</li>
-                            <li>AWS-S3<img src="https://cdn.worldvectorlogo.com/logos/aws-logo.svg"/></li>
-                            <li>PostgreSQL<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg"/></li>
+                            <li>AWS-S3<img alt="logo" src="https://cdn.worldvectorlogo.com/logos/aws-logo.svg"/></li>
+                            <li>PostgreSQL<img alt="logo" src="https://cdn.worldvectorlogo.com/logos/postgresql.svg"/></li>
                         </ul>
                     </section>
                     <section className="SpecialThanks">
@@ -98,7 +98,7 @@ class About extends Component {
                         </p>
                         <h2>Businesses</h2>
                         <p>
-                            Provo Food Truck Rally (Suzy Thai, K88),<br/> Wendys,<br/> DevMountain,<br/> SAY,<br/> Google Fiber,<br/> Spotify,<br/> Costco,<br/> Slack,<br/> Adobe,<br/> Thinking Emojis.
+                            Provo Food Truck Rally (Suzy Thai, K88),<br/> Wendys,<br/> DevMountain,<br/> SAY,<br/> Google Fiber,<br/> Spotify,<br/> Costco,<br/> Slack,<br/> Adobe,<br/> Thinking Emojis, <br/>NPM.
                         </p>
                     </section>
                 </main>

@@ -33,6 +33,7 @@ export default class Header extends Component {
         let menuDivShadow = <div className="menu_div_shadow hidden_shadow"></div>;
         let menuDiv = <div className="menu_div">
                 <Link className="menu_link_item" to="/home" >Go Home</Link >
+                <Link className="menu_link_item" to="/profile" >Profile</Link >
                 <Link className="menu_link_item" to="/memories">View My Memories</Link >
                 <Link className="menu_link_item" to="/upload">Submit a Memory</Link >
                 <Link className="menu_link_item" to="/connect">Connect with a Loved One</Link >

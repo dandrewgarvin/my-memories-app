@@ -8,22 +8,6 @@ import Header from './Header'
 
 class ViewMemory extends Component {
 
-    // constructor(){
-    //     super()
-
-    //     this.state = {
-    //         itemIsHidden: false
-    //     }
-    // }
-
-    // componentDidMount(){
-    //     setTimeout(() => { 
-    //         this.setState({
-    //             itemIsHidden: true
-    //         }) 
-    //     }, 5000)
-    // }
-
     componentWillMount(){
 		if (!this.props.user.id) {
 			return this.props.history.push('/')
@@ -41,23 +25,10 @@ class ViewMemory extends Component {
 
         let meme = this.props.viewedMemory;
 
-        const hiddenItems = ()=> {
-            if (!this.state.itemIsHidden) {
-                return (
-                    <div className="image_container">
-                        <h1 className="memory_title item_to_hide">{meme.memory_title}</h1>
-                        <h1 className="memory_date item_to_hide">Date: {timestamps(meme.memory_date)}</h1>
-                        <img src={meme.img_url} className="view_memory_image" alt="user submitted memory" />
-                    </div>
-                )
-            } else return <div className="image_container"><img src={meme.img_url} className="view_memory_image" alt="user submitted memory" /></div>
-        }
-
 		return (
 			<div className='ViewMemory'>
 				<Header />
                 <main>
-                    {/* {hiddenItems()} */}
                     <div className="image_container">
                         <h1 className="memory_title item_to_hide">{meme.memory_title}</h1>
                         <h1 className="memory_date item_to_hide">Date: {timestamps(meme.memory_date)}</h1>

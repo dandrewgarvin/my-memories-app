@@ -333,7 +333,7 @@ button {
     font-size: 20px;
     color: #6abbce;
     text-align: center;
-    margin: 65px 20px; }
+    margin: 50px 20px; }
   .Header :nth-last-child(1) {
     color: #fa7c92;
     font-weight: bold; }
@@ -656,6 +656,20 @@ button {
   border-radius: 5px;
   font-family: 'Raleway', sans-serif;
   font-size: 20px; }
+
+@media (min-width: 768px) {
+  .UploadImage .upload_image {
+    height: 400px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px; }
+    .UploadImage .upload_image .upload_image_button {
+      width: 175px; }
+  .UploadImage .remove_image_preview {
+    padding: 3px;
+    font-size: 22px; }
+  .UploadImage .memory_text {
+    height: 250px;
+    font-size: 24px; } }
 
 .UploadMemory {
   font-size: 20px;

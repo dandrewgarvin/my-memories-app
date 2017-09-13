@@ -36,6 +36,7 @@ export default class Header extends Component {
                 <Link className="menu_link_item" to="/memories">View My Memories</Link >
                 <Link className="menu_link_item" to="/upload">Submit a Memory</Link >
                 <Link className="menu_link_item" to="/connect">Connect with a Loved One</Link >
+                <Link className="menu_link_item" to="/about">Additional Information</Link >
                  <a className="menu_link_item" href="http://192.168.0.43:3001/auth/logout">Logout</a >
         </div>
         let hamburgerOpen = <span onClick={this.buttonClicked} className="menu_open"></span>;
@@ -49,6 +50,7 @@ export default class Header extends Component {
                         <Link className="menu_link_item_desktop" to="/memories">View My Memories</Link >
                         <Link className="menu_link_item_desktop" to="/upload">Submit a Memory</Link >
                         <Link className="menu_link_item_desktop" to="/connect">Connect with a Loved One</Link >
+                        <Link className="menu_link_item_desktop" to="/about">Additional Information</Link >
                         <a className="menu_link_item_desktop" href="http://192.168.0.43:3001/auth/logout">Logout</a >
                 </div>
                 {this.state.menuOpen ? hamburgerClose : hamburgerOpen}

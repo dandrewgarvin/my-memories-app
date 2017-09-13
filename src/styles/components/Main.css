@@ -333,7 +333,7 @@ button {
     font-size: 20px;
     color: #6abbce;
     text-align: center;
-    margin: 75px 20px; }
+    margin: 65px 20px; }
   .Header :nth-last-child(1) {
     color: #fa7c92;
     font-weight: bold; }
@@ -381,7 +381,7 @@ button {
       opacity: .6; } }
     .Header .menu_link_item {
       font-size: 26px;
-      margin: 95px 30px; } }
+      margin: 75px 30px; } }
 
 @media (min-width: 1024px) {
   .Header {
@@ -408,7 +408,8 @@ button {
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 10px; }
+        border-radius: 10px;
+        text-align: center; }
       .Header .menu_div_desktop :nth-last-child(1) {
         color: #fa7c92; } }
 
@@ -949,3 +950,81 @@ button {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: 500; }
+
+.About {
+  text-align: center;
+  font-family: 'Varela Round', 'Raleway', sans-serif; }
+  .About h1 {
+    color: #fa7c92;
+    margin: 15px;
+    font-size: 24px; }
+  .About .Introduction p {
+    margin: auto;
+    line-height: 20px;
+    width: 80%; }
+  .About .Founders h2 {
+    color: #6abbce;
+    font-size: 20px;
+    margin: 15px; }
+  .About .Founders img {
+    height: 100px;
+    border-radius: 50%;
+    width: auto;
+    margin-top: 15px; }
+  .About .Founders p {
+    width: 80%;
+    margin: auto; }
+  .About .Founders .bolded {
+    font-weight: bold;
+    font-size: 14px; }
+  .About .Technology_Mobile h2 {
+    margin: 15px; }
+  .About .Technology_Mobile ul {
+    background: #90cddb;
+    width: 250px;
+    margin: 15px auto;
+    border-radius: 10px;
+    padding: 3px; }
+  .About .Technology_Mobile li {
+    list-style: none;
+    margin: 6px; }
+  .About .Technology_Desktop {
+    display: none; }
+    .About .Technology_Desktop img {
+      height: 40px;
+      width: auto;
+      margin-left: 10px; }
+    .About .Technology_Desktop h2 {
+      margin: 15px; }
+    .About .Technology_Desktop ul {
+      background: #6abbce;
+      width: 500px;
+      margin: 15px auto;
+      border-radius: 10px;
+      padding: 3px; }
+    .About .Technology_Desktop li {
+      background: white;
+      height: 50px;
+      list-style: none;
+      margin: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      border-radius: 10px; }
+  .About .SpecialThanks h2 {
+    color: #6abbce;
+    font-size: 20px;
+    margin: 15px; }
+  .About .SpecialThanks p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px; }
+
+@media (min-width: 768px) {
+  .About .Founders img {
+    height: 150px; }
+  .About .Technology_Desktop {
+    display: block; }
+  .About .Technology_Mobile {
+    display: none; } }

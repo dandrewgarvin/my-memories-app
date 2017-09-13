@@ -1,0 +1,112 @@
+.About {
+    text-align: center;
+    font: {
+        family: 'Varela Round', 'Raleway', sans-serif;
+    }
+    h1 {
+        color: $primary;
+        margin: 15px;
+        font-size: 24px;
+    }
+    .Introduction {
+        p {
+            margin: auto;
+            line-height: 20px;
+            width: 80%;
+        }
+    }
+    .Founders {
+        h2 {
+            color: $secondary;
+            font-size: 20px;
+            margin: 15px;
+        }
+        img {
+            height: 100px;
+            border-radius: 50%;
+            width: auto;
+            margin-top: 15px;
+        }
+        p {
+            width: 80%;
+            margin: auto;
+        }
+        .bolded {
+            font-weight: bold;
+            font-size: 14px;
+        }
+    }
+    .Technology_Mobile {
+        h2 {
+            margin: 15px;
+        }
+        ul {
+            background: lighten($secondary, 10);
+            width: 250px;
+            margin: 15px auto;
+            border-radius: 10px;
+            padding: 3px;
+        }
+        li {
+            list-style: none;
+            margin: 6px;
+        }
+    }
+    .Technology_Desktop {
+            display: none;
+            img {
+                height: 40px;
+                width: auto;
+                margin-left: 10px;
+            }
+            h2 {
+                margin: 15px;
+            }
+            ul {
+                background: $secondary;
+                width: 500px;
+                margin: 15px auto;
+                border-radius: 10px;
+                padding: 3px;
+            }
+            li {
+                background: rgba(255, 255, 255, 1);
+                height: 50px;
+                list-style: none;
+                margin: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 22px;
+                border-radius: 10px;
+            }
+        }
+    .SpecialThanks {
+        h2 {
+            color: $secondary;
+            font-size: 20px;
+            margin: 15px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 20px;
+            margin: 10px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .About {
+        .Founders {
+            img {
+                height: 150px;
+            }
+        }
+        .Technology_Desktop{
+            display: block;
+        } 
+        .Technology_Mobile {
+            display: none;
+        }
+    }
+}

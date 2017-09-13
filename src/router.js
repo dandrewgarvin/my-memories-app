@@ -20,6 +20,7 @@ import Failure from './components/Failure'
 import NewConnection from './components/NewConnection'
 import InvitationSent from './components/InvitationSent'
 import About from './components/About'
+import Profile from './components/Profile'
 
 
 export default (
@@ -36,6 +37,7 @@ export default (
             <Route path="/connect" component={NewConnection} />
             <Route path="/invitation-sent" component={InvitationSent} />
             <Route path="/about" component={About} />
+            <Route path="/profile" component={Profile} />
             
         </Switch>
 )

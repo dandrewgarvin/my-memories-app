@@ -1042,3 +1042,43 @@ button {
     display: block; }
   .About .Technology_Mobile {
     display: none; } }
+
+.Profile {
+  color: #777;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px; }
+  .Profile .data_container {
+    padding: 20px;
+    position: relative; }
+    .Profile .data_container .data_body {
+      font-size: 16px;
+      margin: 10px 0px 0px 10px; }
+    .Profile .data_container .data_show {
+      position: absolute;
+      left: 150px;
+      top: 18px;
+      color: #6abbce;
+      font-size: 14px; }
+  .Profile .preference_container .preference_header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px; }
+  .Profile .preference_container .preference_body {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; }
+  .Profile .preference_container .preference_input {
+    padding: 10px;
+    width: 50%; }
+  .Profile .preference_container .preference_submit {
+    width: 100%;
+    background: #fa7c92;
+    height: 60px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    margin-top: 15px;
+    font-size: 18px; }
+  .Profile .preference_container .right {
+    padding-left: 12%; }

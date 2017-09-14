@@ -8,6 +8,7 @@ const express = require('express'),
       Auth0Strategy = require('passport-auth0'),
       massive = require('massive'),
       AWS = require('aws-sdk'),
+      twilio = require('twilio'),
       app = express(),
       port = 3001;
 
@@ -72,6 +73,12 @@ passport.use(new Auth0Strategy({
   })
 
 }));
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_NUMBER;
+
+const client = new twilio(accountSid, authToken);
 
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -199,6 +206,18 @@ app.post('/api/submitMemory', (req, res) => {
     console.log(`user ${req.user.id} has submitted a memory to user ${meme[1]}`)
 
     app.get('db').createMemory(meme).then((response) => {
+        if (response[1].notification_preference >= 2 &&  response[1].phone) {
+            let number = '+1' + response[1].phone
+            console.log(`Notification text sent to ${response[1].first_name} ${response[1].last_name}: ${number}`)
+            client.messages.create({
+                to: number,
+                from: twilioNumber,
+                body:"You have a new memory in your inbox! Login to your MyMemories Account to view it. This is an automated message from MyMemoriesApp. Please do not respond."
+            }, (error, message) => { if (error) console.log('Oops! There was an error sending a text notification.', error) });
+        }
+        else {
+            console.log('The user receiving memories cannot receive text notifications.')
+        }
         return res.status(200).send(response);
     })
 })

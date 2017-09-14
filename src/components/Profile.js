@@ -154,6 +154,8 @@ class Profile extends Component {
             case 'both':
                 notify = 3
             break;
+            default:
+                return null
         }
         let submissionData = [
             userData.first_name,
@@ -164,9 +166,9 @@ class Profile extends Component {
         ]
 
         axios.put('/api/updateUserProfile', submissionData).then((response) => {
-
+            console.log(response.data[0])
         })
-        
+
         //call reducer function to update store state for use without having to log-out and back in
 
     }

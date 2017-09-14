@@ -182,6 +182,13 @@ app.put('/api/updateRequest', (req, res) => {
     })
 })
 
+app.put('/api/updateUserProfile', (req, res) => {
+    console.log([...req.body, req.user.id])
+    app.get('db').updateUserProfile([...req.body, req.user.id]).then((response) => {
+        return res.status(200).send(response);
+    })
+})
+
 // === POST REQUESTS === //
 
 app.post('/api/submitMemory', (req, res) => {

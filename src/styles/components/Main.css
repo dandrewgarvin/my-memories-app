@@ -1059,6 +1059,15 @@ button {
       top: 18px;
       color: #6abbce;
       font-size: 14px; }
+    .Profile .data_container .data_body_input {
+      background: #cae7ee;
+      width: 120px;
+      margin: 10px 0px 0px 10px;
+      padding: 5px;
+      font-size: 14px;
+      font-family: 'Raleway', sans-serif; }
+      .Profile .data_container .data_body_input ::placeholder {
+        color: #777; }
   .Profile .preference_container .preference_header {
     text-align: center;
     width: 100%;

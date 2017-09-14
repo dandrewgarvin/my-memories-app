@@ -20,6 +20,19 @@
             color: $secondary;
             font-size: 14px;
         }
+        .data_body_input {
+            background: lighten($secondary, 25);
+            width: 120px;
+            margin: 10px 0px 0px 10px;
+            padding: 5px;
+            ::placeholder {
+                color: $gray;
+            }
+            font: {
+                size: 14px;
+                family: 'Raleway', sans-serif;
+            }
+        }
     }
     .preference_container {
         .preference_header {

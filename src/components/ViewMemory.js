@@ -10,8 +10,12 @@ class ViewMemory extends Component {
 
     componentWillMount(){
 		if (!this.props.user.id) {
-			return this.props.history.push('/')
-		}
+			return this.props.history.push('/memories')
+        }
+    }
+
+    componentDidMount(){
+        console.log(this.props)
     }
 
 	render(){

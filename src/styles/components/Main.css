@@ -1091,3 +1091,24 @@ button {
     font-size: 18px; }
   .Profile .preference_container .right {
     padding-left: 12%; }
+
+@media (min-width: 414px) {
+  .Profile .data_container {
+    width: 70%;
+    position: relative;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .Profile .data_container .data_body {
+      margin: 10px; }
+    .Profile .data_container .data_show {
+      position: relative;
+      text-align: left;
+      top: 0px;
+      left: 0px;
+      margin-left: 15px; }
+    .Profile .data_container .data_body_input {
+      margin: 10px 0px 0px 10px; }
+  .Profile .preference_container .preference_header {
+    margin-bottom: 20px; } }

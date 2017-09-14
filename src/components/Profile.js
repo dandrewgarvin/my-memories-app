@@ -15,7 +15,7 @@ class Profile extends Component {
 
         this.state = {
             selectedOption: 'none',
-            userData: null,
+            userData: {},
             email: '',
             emailMasked: '',
             phone: '',
@@ -39,10 +39,13 @@ class Profile extends Component {
         emailMasked[0] = emailShown + emailMask
         emailMasked = emailMasked.join('@')
 
-        let phoneMasked = this.props.user.phone
-        let phoneMaskedFirst = phoneMasked.substring(0, 6).replace(/./g, '*')
-        let phoneMaskedLast = phoneMasked.substring(6, phoneMasked.length)
-        phoneMasked = phoneMaskedFirst + phoneMaskedLast
+        if (this.props.user.phone) {
+            var phoneMasked = this.props.user.phone
+            let phoneMaskedFirst = phoneMasked.substring(0, 6).replace(/./g, '*')
+            let phoneMaskedLast = phoneMasked.substring(6, phoneMasked.length)
+            phoneMasked = phoneMaskedFirst + phoneMaskedLast
+        }
+
 
         let notify = this.props.user.notification_preference
         switch (notify){

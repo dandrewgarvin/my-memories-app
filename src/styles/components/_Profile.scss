@@ -67,3 +67,34 @@
         }
     }
 }
+
+@media (min-width: 414px) {
+    .Profile {
+        .data_container {
+            width: 70%;
+            position: relative;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .data_body {
+                margin: 10px;
+            }
+            .data_show {
+                position: relative;
+                text-align: left;
+                top: 0px;
+                left: 0px;
+                margin-left: 15px;
+            }
+            .data_body_input {
+                margin: 10px 0px 0px 10px;
+            }
+        }
+        .preference_container {
+            .preference_header {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

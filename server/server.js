@@ -9,6 +9,7 @@ const express = require('express'),
       massive = require('massive'),
       AWS = require('aws-sdk'),
       twilio = require('twilio'),
+      nodemailer = require('nodemailer'),
       app = express(),
       port = 3001;
 
@@ -80,6 +81,9 @@ const twilioNumber = process.env.TWILIO_NUMBER;
 
 const client = new twilio(accountSid, authToken);
 
+const nodemailerAccount = process.env.NODEMAILER_ACCOUNT
+const transporter = nodemailer.createTransport(nodemailerAccount)
+
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_SECRET_KEY,
@@ -105,13 +109,10 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     failureRedirect: 'http://192.168.0.43:3000/#/'
 }))
 
-// ===== CUSTOM MIDDLEWARE ===== //
 
 app.get('/auth/me', (req, res, next) => {
     console.log('req.USER', req.user)
     return res.status(200).send(req.user);
-
-
 })
 
 app.get('/auth/logout', (req,res) => {
@@ -119,6 +120,8 @@ app.get('/auth/logout', (req,res) => {
     req.logOut();
     return res.redirect(302, 'http://192.168.0.43:3000/#/')
 })
+
+// ===== CUSTOM MIDDLEWARE ===== //
 
 // ========== ENDPOINTS ========== //
 
@@ -214,10 +217,26 @@ app.post('/api/submitMemory', (req, res) => {
                 from: twilioNumber,
                 body:"You have a new memory in your inbox! Login to your MyMemories Account to view it. This is an automated message from MyMemoriesApp. Please do not respond."
             }, (error, message) => { if (error) console.log('Oops! There was an error sending a text notification.', error) });
-        }
-        else {
-            console.log('The user receiving memories cannot receive text notifications.')
-        }
+        } 
+        if (response[1].notification_preference === 1 || response[1].notification_preference === 3) {
+            var email = response[1].email
+            let mailOptions = {
+                from: '"MyMemories Automated Email" <mymemoriesemailer@gmail.com>',
+                to: email,
+                subject: 'You have a new memory!',
+                text: 'You have a new memory in your inbox! Login to your MyMemories Account to view it. This is an automated message from MyMemoriesApp. Please do not respond.',
+                html: '<h1 style="text-align: center; color: #FA7C92">You have a new memory!</h1><p style="text-align: center; color: #6ABBCE"> To view this new memory, please log into your MyMemoriesApp account. If you have any questions, please feel free to response to this emai.</p><br><p style="color: #666;">Thank you,</p><p style="color: #666; font-weight: bold;">The MyMemories Team</p>'
+            }
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error)
+                }
+                console.log(`Notification email sent to ${response[1].first_name} ${response[1].last_name}: ${email}`)
+            })
+        } 
+        // else {
+        //     console.log('The user receiving memories cannot receive text/email notifications.')
+        // }
         return res.status(200).send(response);
     })
 })

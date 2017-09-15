@@ -170,10 +170,10 @@ class Profile extends Component {
 
         axios.put('/api/updateUserProfile', submissionData).then((response) => {
             console.log(response.data[0])
+            if (submissionData[4] % 2 > 0){
+                alert('The email notification service is currently unavailable.')
+            }
         })
-
-        //call reducer function to update store state for use without having to log-out and back in
-
     }
     
 	render(){

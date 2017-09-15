@@ -183,6 +183,7 @@ class UploadMemory extends Component {
                             {selectionList}
                         </select>
                     </div>
+                    <h1 className="memory_header">When did the memory happen?</h1>
                     <div className="memory_date_container">
                         <input className="memory_date_item" name="month" placeholder="mm" maxLength="2" onChange={this.handleDateChange.bind(this)}/>
                         <input className="memory_date_item" name="day" placeholder="dd" maxLength="2" onChange={this.handleDateChange.bind(this)}/>

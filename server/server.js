@@ -18,6 +18,7 @@ const express = require('express'),
 
 // ===== TOP LEVEL MIDDLEWARE ===== //
 
+app.use( express.static( `${__dirname}/../build`))
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
@@ -26,6 +27,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
 
 massive({
   host: process.env.DB_HOST,
@@ -49,6 +51,7 @@ passport.use(new Auth0Strategy({
 }, function(accessToken, refreshToken, extraParams, profile, done) {
 
   const db = app.get('db');
+  console.log('profile is:', profile)
 
   db.find_user([ profile._json.email ])
   .then( user => {
@@ -105,8 +108,8 @@ passport.deserializeUser(function(user, done){
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://192.168.0.43:3000/#/home',
-    failureRedirect: 'http://192.168.0.43:3000/#/'
+    successRedirect: '/#/home',
+    failureRedirect: '/#/'
 }))
 
 
@@ -118,7 +121,7 @@ app.get('/auth/me', (req, res, next) => {
 app.get('/auth/logout', (req,res) => {
     console.log(`user ${req.user.id} has logged out`)
     req.logOut();
-    return res.redirect(302, 'http://192.168.0.43:3000/#/')
+    return res.redirect(302, '/#/')
 })
 
 // ===== CUSTOM MIDDLEWARE ===== //
@@ -291,6 +294,10 @@ app.post('/api/uploadImage', (req, res) => {
 // === DELETE REQUESTS === //
 
 
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '..','build','index.html'));
+})
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

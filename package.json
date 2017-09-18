@@ -32,6 +32,11 @@
 		"start": "npm-run-all -p watch-css start-js",
 		"build": "npm run build-css && react-scripts build",
 		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"now-start": "node server/server.js",
+		"deploy": "now --public --dotenv=.env.prod -d"
+	},
+	"now":{
+		"alias":"my-memories-app"
 	}
 }

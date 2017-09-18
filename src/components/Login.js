@@ -25,7 +25,7 @@ class Login extends Component {
                     <p>Oops! It looks like you're not logged in.</p>
                     <p>To continue using MyMemories, please log in now!</p>
                     <section className="buttons">
-                        <a href="http://192.168.0.43:3001/auth"><button>Login or Sign Up</button></a>
+                        <a href="/auth"><button>Login or Sign Up</button></a>
                     </section>
                 </main>
 			</div>
